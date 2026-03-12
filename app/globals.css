@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #FAFAF8;
+  --bg-2: #F3F1EC;
+  --bg-3: #ECEAE4;
+  --white: #FFFFFF;
+  --teal: #0D7A6B;
+  --teal-light: rgba(13, 122, 107, 0.08);
+  --teal-border: rgba(13, 122, 107, 0.18);
+  --teal-mid: #0A6357;
+  --ink: #14130F;
+  --ink-mid: #4A4844;
+  --ink-dim: #8A8884;
+  --border: #DDD9D0;
+  --border-strong: #C8C4BA;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-outfit), sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .chip-teal {
+    @apply text-[10.5px] font-semibold tracking-[0.1em] uppercase text-teal block mb-4;
+  }
+
+  .chip-gray {
+    @apply text-[10.5px] font-semibold tracking-[0.1em] uppercase text-ink-dim block mb-4;
+  }
+
+  .h2 {
+    font-family: var(--font-fraunces), serif;
+    @apply text-[clamp(28px,3.8vw,48px)] font-bold leading-[1.08] tracking-[-0.02em] text-ink;
+  }
+
+  .lead {
+    @apply text-[15px] text-ink-mid leading-[1.8] font-light max-w-[540px] mt-[14px];
+  }
+
+  .rule {
+    @apply h-px bg-border;
+  }
+
+  .btn-teal {
+    @apply bg-teal text-white no-underline px-[26px] py-[13px] rounded-md text-[13.5px] font-semibold transition-all duration-150 hover:opacity-90 hover:-translate-y-px inline-block;
+  }
+
+  .btn-ghost {
+    @apply border border-border text-ink-mid no-underline px-[26px] py-[13px] rounded-md text-[13.5px] font-normal transition-all duration-150 bg-white hover:border-teal-border hover:text-teal inline-block;
+  }
+
+  .sec-white {
+    @apply bg-white py-24 px-[52px];
+  }
+
+  .sec-bg {
+    background: var(--bg);
+    @apply py-24 px-[52px];
+  }
+
+  .sec-bg2 {
+    background: var(--bg-2);
+    @apply py-24 px-[52px];
+  }
+
+  .sec-bg3 {
+    background: var(--bg-3);
+    @apply py-24 px-[52px];
+  }
+
+  .tag-s {
+    @apply inline-block rounded-full px-[9px] py-[2px] text-[10.5px] text-ink-mid mr-[3px] border border-border;
+    background: var(--bg-2);
+  }
+
+  .nav-pill {
+    @apply border text-teal px-4 py-[6px] rounded-full text-xs font-normal tracking-[0.05em] uppercase no-underline transition-colors duration-150;
+    border-color: var(--teal-border) !important;
+    color: var(--teal) !important;
+  }
+
+  .nav-pill:hover {
+    background: var(--teal-light) !important;
+  }
+}
