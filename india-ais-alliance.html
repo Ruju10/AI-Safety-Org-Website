@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India AIS Alliance</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,900;1,300;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF8;
+  --bg-2: #F3F1EC;
+  --bg-3: #ECEAE4;
+  --white: #FFFFFF;
+  --teal: #0D7A6B;
+  --teal-light: rgba(13,122,107,0.08);
+  --teal-border: rgba(13,122,107,0.18);
+  --teal-mid: #0A6357;
+  --ink: #14130F;
+  --ink-mid: #4A4844;
+  --ink-dim: #8A8884;
+  --border: #DDD9D0;
+  --border-strong: #C8C4BA;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* NAV */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 52px; height:60px;
+  background:rgba(250,250,248,0.95);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo { display:flex; align-items:center; gap:11px; text-decoration:none; }
+.nav-mark {
+  width:30px; height:30px; border:1.5px solid var(--teal); border-radius:5px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Fraunces',serif; font-size:14px; font-weight:600; color:var(--teal);
+}
+.nav-name { font-size:13px; font-weight:500; color:var(--ink); letter-spacing:0.02em; }
+.nav-name em { font-style:normal; color:var(--teal); }
+.nav-links { display:flex; align-items:center; gap:30px; list-style:none; }
+.nav-links a {
+  color:var(--ink-mid); text-decoration:none;
+  font-size:12px; font-weight:400; letter-spacing:0.05em; text-transform:uppercase;
+  transition:color 0.15s;
+}
+.nav-links a:hover { color:var(--ink); }
+.nav-pill {
+  border:1px solid var(--teal-border) !important;
+  color:var(--teal) !important;
+  padding:6px 16px; border-radius:100px;
+}
+.nav-pill:hover { background:var(--teal-light) !important; }
+
+/* HERO */
+.hero {
+  min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+  padding:120px 52px 80px; position:relative; overflow:hidden;
+  background:var(--white);
+}
+.hero-grid {
+  position:absolute; inset:0; pointer-events:none;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size:64px 64px;
+  opacity:0.5;
+  mask-image:radial-gradient(ellipse 75% 75% at 50% 50%, black, transparent);
+}
+.hero-glow {
+  position:absolute; top:-10%; right:0%;
+  width:600px; height:600px; border-radius:50%; pointer-events:none;
+  background:radial-gradient(circle, rgba(13,122,107,0.06) 0%, transparent 65%);
+}
+.hero-content { position:relative; max-width:780px; }
+.hero-tag {
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid var(--border); border-radius:100px;
+  padding:5px 14px 5px 8px;
+  font-size:11px; letter-spacing:0.07em; text-transform:uppercase;
+  color:var(--ink-dim); margin-bottom:36px;
+  background:var(--bg);
+}
+.tag-dot { width:5px; height:5px; border-radius:50%; background:var(--teal); animation:blink 2.4s ease infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.15} }
+
+.hero h1 {
+  font-family:'Fraunces',serif;
+  font-size:clamp(52px,8vw,96px);
+  font-weight:900; line-height:0.95; letter-spacing:-0.025em; margin-bottom:30px;
+  color:var(--ink);
+}
+.ais { color:var(--teal); font-style:italic; }
+.hero-sub {
+  font-size:clamp(15px,1.8vw,18px); color:var(--ink-mid);
+  max-width:530px; line-height:1.8; font-weight:300; margin-bottom:44px;
+}
+.hero-actions { display:flex; gap:14px; flex-wrap:wrap; }
+.btn-teal {
+  background:var(--teal); color:#fff; text-decoration:none;
+  padding:13px 26px; border-radius:6px; font-size:13.5px; font-weight:600;
+  transition:opacity 0.15s,transform 0.15s;
+}
+.btn-teal:hover { opacity:0.88; transform:translateY(-1px); }
+.btn-ghost {
+  border:1px solid var(--border); color:var(--ink-mid);
+  text-decoration:none; padding:13px 26px; border-radius:6px;
+  font-size:13.5px; font-weight:400; transition:border-color 0.15s,color 0.15s;
+  background:var(--white);
+}
+.btn-ghost:hover { border-color:var(--teal-border); color:var(--teal); }
+.hero-baseline {
+  position:absolute; bottom:52px; left:52px; right:52px;
+  border-top:1px solid var(--border); padding-top:26px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.building-label { font-size:11px; color:var(--ink-dim); letter-spacing:0.06em; text-transform:uppercase; display:flex; align-items:center; gap:12px; }
+.build-bar { width:100px; height:2px; background:var(--border); border-radius:1px; overflow:hidden; }
+.build-fill { width:30%; height:100%; background:var(--teal); border-radius:1px; animation:grow 3s ease infinite alternate; }
+@keyframes grow { from{width:20%} to{width:45%} }
+.scroll-hint { font-size:11px; color:var(--ink-dim); letter-spacing:0.06em; text-transform:uppercase; display:flex; align-items:center; gap:9px; }
+.scroll-circle { width:20px; height:20px; border:1px solid var(--border); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:9px; animation:bob 2s ease infinite; }
+@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(3px)} }
+
+/* SHARED */
+.sec-white  { background:var(--white);  padding:96px 52px; }
+.sec-bg     { background:var(--bg);     padding:96px 52px; }
+.sec-bg2    { background:var(--bg-2);   padding:96px 52px; }
+.sec-bg3    { background:var(--bg-3);   padding:96px 52px; }
+
+.chip-teal  { font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal); margin-bottom:16px; display:block; }
+.chip-gray  { font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-dim); margin-bottom:16px; display:block; }
+.h2         { font-family:'Fraunces',serif; font-size:clamp(28px,3.8vw,48px); font-weight:700; line-height:1.08; letter-spacing:-0.02em; color:var(--ink); }
+.lead       { font-size:15px; color:var(--ink-mid); line-height:1.8; font-weight:300; max-width:540px; margin-top:14px; }
+.rule       { height:1px; background:var(--border); }
+
+/* ABOUT */
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; margin-top:56px; }
+.rationale-box {
+  background:var(--bg-2); border:1px solid var(--border); border-radius:12px; padding:36px; margin-bottom:24px;
+}
+.rationale-box h3 { font-family:'Fraunces',serif; font-size:19px; color:var(--teal); margin-bottom:14px; }
+.rationale-box p { font-size:14.5px; color:var(--ink-mid); line-height:1.8; }
+.team-trio { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.team-card {
+  background:var(--white); border:1px solid var(--border); border-radius:10px;
+  padding:22px 16px; text-align:center; transition:border-color 0.2s, box-shadow 0.2s;
+}
+.team-card:hover { border-color:var(--teal-border); box-shadow:0 4px 16px rgba(13,122,107,0.07); }
+.avi {
+  width:46px; height:46px; border-radius:50%;
+  background:var(--teal-light); border:1.5px solid var(--teal-border);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Fraunces',serif; font-size:18px; color:var(--teal); font-weight:600;
+  margin:0 auto 11px;
+}
+.t-name { font-size:14px; font-weight:600; color:var(--ink); }
+.t-role { font-size:11px; color:var(--ink-dim); margin-top:3px; }
+.advisory-box {
+  background:var(--white); border:1px solid var(--border); border-radius:12px; padding:32px;
+}
+.advisory-box .label { font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-dim); margin-bottom:20px; }
+.advisor-row { display:flex; align-items:center; gap:18px; margin-bottom:18px; }
+.advisor-avi {
+  width:54px; height:54px; border-radius:50%; flex-shrink:0;
+  background:var(--teal-light); border:1.5px solid var(--teal-border);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Fraunces',serif; font-size:22px; color:var(--teal); font-weight:600;
+}
+.advisor-name { font-size:16px; font-weight:600; color:var(--ink); }
+.advisor-badge {
+  display:inline-block; margin-top:5px;
+  font-size:10px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase;
+  color:var(--teal); background:var(--teal-light); border:1px solid var(--teal-border);
+  border-radius:100px; padding:2px 10px;
+}
+.advisor-bio { font-size:13.5px; color:var(--ink-mid); line-height:1.7; margin-bottom:16px; }
+.advisory-open { border:1px dashed var(--border); border-radius:8px; padding:18px; text-align:center; background:var(--bg); }
+.advisory-open p { font-size:12.5px; color:var(--ink-dim); }
+
+/* TOC */
+.toc-grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; margin-top:56px; }
+.pillars { display:flex; flex-direction:column; }
+.pillar {
+  display:flex; align-items:flex-start; gap:20px;
+  padding:20px 24px;
+  border:1px solid var(--border); border-bottom:none;
+  background:var(--white);
+  transition:background 0.15s;
+}
+.pillar:first-child { border-radius:8px 8px 0 0; }
+.pillar:last-child { border-radius:0 0 8px 8px; border-bottom:1px solid var(--border); }
+.pillar:hover { background:var(--bg-2); }
+.p-num { font-family:'Fraunces',serif; font-size:22px; color:var(--teal); opacity:0.4; line-height:1; flex-shrink:0; padding-top:1px; }
+.pillar h4 { font-size:14.5px; font-weight:500; color:var(--ink); margin-bottom:4px; }
+.pillar p { font-size:13px; color:var(--ink-dim); line-height:1.6; }
+
+/* LANDSCAPE */
+.legend { display:flex; gap:18px; flex-wrap:wrap; margin-bottom:24px; }
+.leg-item { display:flex; align-items:center; gap:7px; font-size:12px; color:var(--ink-mid); }
+.leg-dot { width:8px; height:8px; border-radius:50%; }
+.d-india    { background:#0D7A6B; }
+.d-intl     { background:#3B6FD4; }
+.d-academic { background:#C47A1B; }
+.d-policy   { background:#B0399A; }
+.orgs-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(196px,1fr)); gap:10px; margin-top:4px; }
+.org-card {
+  background:var(--white); border:1px solid var(--border); border-radius:10px;
+  padding:18px 16px; position:relative; transition:border-color 0.2s,box-shadow 0.2s;
+}
+.org-card:hover { border-color:var(--border-strong); box-shadow:0 4px 14px rgba(0,0,0,0.06); }
+.org-dot-c { position:absolute; top:16px; right:16px; width:7px; height:7px; border-radius:50%; }
+.org-name { font-size:13.5px; font-weight:600; color:var(--ink); margin-bottom:4px; line-height:1.3; }
+.org-type { font-size:11.5px; color:var(--ink-dim); }
+
+/* PARTICIPATION */
+.part-cols { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:52px; }
+.part-col { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:38px 34px; }
+.part-head { font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal); margin-bottom:16px; }
+.part-col h3 { font-family:'Fraunces',serif; font-size:26px; color:var(--ink); margin-bottom:12px; }
+.part-col p { font-size:14px; color:var(--ink-mid); line-height:1.75; margin-bottom:22px; font-weight:300; }
+.part-list { list-style:none; margin-bottom:26px; }
+.part-list li { display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--ink-mid); padding:9px 0; border-bottom:1px solid var(--border); }
+.part-list li:last-child { border-bottom:none; }
+.part-list li::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--teal); flex-shrink:0; }
+.form-mock { background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:18px; }
+.form-label { font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-dim); margin-bottom:10px; }
+.form-field { border:1px solid var(--border); border-radius:5px; padding:9px 12px; font-size:12.5px; color:var(--ink-dim); margin-bottom:7px; background:var(--white); }
+.form-submit { width:100%; background:var(--teal); color:#fff; border:none; border-radius:5px; padding:11px; font-size:13px; font-weight:600; cursor:pointer; margin-top:3px; font-family:'Outfit',sans-serif; }
+
+/* INTL ORGS */
+.intl-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:48px; }
+.intl-card { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:22px 20px; transition:border-color 0.2s,box-shadow 0.2s; }
+.intl-card:hover { border-color:var(--border-strong); box-shadow:0 4px 14px rgba(0,0,0,0.05); }
+.intl-name { font-size:14px; font-weight:600; color:var(--ink); margin-bottom:6px; }
+.intl-desc { font-size:12.5px; color:var(--ink-mid); line-height:1.55; }
+.intl-tag { display:inline-block; margin-top:12px; font-size:10px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; background:var(--teal-light); color:var(--teal); border:1px solid var(--teal-border); border-radius:100px; padding:2px 10px; }
+
+/* COMMUNITY */
+.comm-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:24px; margin-top:48px; }
+.wa-card {
+  background:var(--teal); border-radius:14px; padding:40px 34px;
+  color:#fff; position:relative; overflow:hidden;
+}
+.wa-card::after { content:''; position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,0.06); }
+.wa-card h3 { font-family:'Fraunces',serif; font-size:26px; margin-bottom:12px; }
+.wa-card p { font-size:14px; opacity:0.82; line-height:1.75; margin-bottom:26px; font-weight:300; }
+.wa-btn-el { display:inline-block; background:#fff; color:var(--teal); text-decoration:none; padding:12px 24px; border-radius:6px; font-size:13.5px; font-weight:600; }
+.news-card { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:30px 26px; }
+.news-card-label { font-size:10.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-dim); margin-bottom:18px; }
+.news-row { display:flex; gap:14px; padding:13px 0; border-bottom:1px solid var(--border); }
+.news-row:last-of-type { border-bottom:none; }
+.news-bullet { width:6px; height:6px; border-radius:50%; background:var(--teal); flex-shrink:0; margin-top:6px; }
+.news-hl { font-size:13.5px; color:var(--ink); line-height:1.5; }
+.news-src { font-size:11px; color:var(--ink-dim); margin-top:4px; }
+.news-more { display:block; text-align:center; margin-top:14px; font-size:12.5px; color:var(--teal); text-decoration:none; letter-spacing:0.03em; }
+
+/* MAPPING */
+.map-tabs { display:flex; gap:5px; margin:36px 0 24px; flex-wrap:wrap; }
+.map-tab { padding:7px 16px; border-radius:100px; font-size:12px; font-weight:500; cursor:pointer; border:1px solid var(--border); color:var(--ink-mid); background:var(--white); transition:all 0.15s; font-family:'Outfit',sans-serif; }
+.map-tab.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.map-tbl { width:100%; border-collapse:collapse; font-size:13.5px; }
+.map-tbl th { text-align:left; padding:10px 16px; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-dim); background:var(--bg-3); border-bottom:2px solid var(--border); }
+.map-tbl td { padding:13px 16px; border-bottom:1px solid var(--border); color:var(--ink-mid); }
+.map-tbl td strong { color:var(--ink); }
+.map-tbl tr:hover td { background:var(--bg); }
+.hi  { color:#0D7A6B; font-weight:600; font-size:12px; }
+.med { color:#C47A1B; font-weight:600; font-size:12px; }
+.tag-s { display:inline-block; background:var(--bg-2); border-radius:100px; padding:2px 9px; font-size:10.5px; color:var(--ink-mid); margin-right:3px; border:1px solid var(--border); }
+
+/* PAST */
+.timeline { position:relative; margin-top:48px; }
+.timeline::before { content:''; position:absolute; left:14px; top:8px; bottom:0; width:1px; background:var(--border); }
+.tl-item { position:relative; padding-left:46px; margin-bottom:24px; }
+.tl-dot { position:absolute; left:8px; top:6px; width:14px; height:14px; border-radius:50%; background:var(--teal); border:3px solid var(--bg); }
+.tl-dot.open { background:transparent; border:1.5px solid var(--border); }
+.tl-box { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:22px 26px; }
+.tl-box.upcoming { opacity:0.55; border-style:dashed; }
+.tl-label { font-size:10.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal); margin-bottom:5px; }
+.tl-label.upcoming { color:var(--ink-dim); }
+.tl-title { font-size:15px; font-weight:500; color:var(--ink); margin-bottom:6px; }
+.tl-body { font-size:13.5px; color:var(--ink-mid); line-height:1.65; }
+
+/* FOOTER */
+footer { background:var(--bg-3); border-top:1px solid var(--border); padding:72px 52px 40px; }
+.footer-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:48px; margin-bottom:52px; padding-bottom:48px; border-bottom:1px solid var(--border); }
+.f-brand { font-family:'Fraunces',serif; font-size:22px; font-weight:600; color:var(--ink); margin-bottom:10px; }
+.f-brand em { font-style:italic; color:var(--teal); }
+.f-desc { font-size:13px; color:var(--ink-mid); line-height:1.7; font-weight:300; }
+.f-col-h { font-size:10.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-dim); margin-bottom:16px; }
+.f-links { list-style:none; }
+.f-links li { margin-bottom:10px; }
+.f-links a { color:var(--ink-mid); text-decoration:none; font-size:13.5px; transition:color 0.15s; }
+.f-links a:hover { color:var(--teal); }
+.footer-bottom { display:flex; align-items:center; justify-content:space-between; font-size:12px; color:var(--ink-dim); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-mark">I</div>
+    <span class="nav-name">India <em>AIS</em> Alliance</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#toc">Theory of Change</a></li>
+    <li><a href="#landscape">Landscape</a></li>
+    <li><a href="#participate">Participate</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#participate" class="nav-pill">Join →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="tag-dot"></span>
+      Building India's AI Safety Ecosystem
+    </div>
+    <h1>India<br><span class="ais">AIS</span><br>Alliance</h1>
+    <p class="hero-sub">A coordination hub for researchers, organisations, and policy practitioners working on AI Safety across India — connecting local efforts with global momentum.</p>
+    <div class="hero-actions">
+      <a href="#participate" class="btn-teal">Get Involved</a>
+      <a href="#landscape" class="btn-ghost">Explore the Landscape →</a>
+    </div>
+  </div>
+  <div class="hero-baseline">
+    <div class="building-label">
+      Laying the foundation
+      <div class="build-bar"><div class="build-fill"></div></div>
+    </div>
+    <div class="scroll-hint">
+      Scroll to explore
+      <div class="scroll-circle">↓</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec-bg" id="about">
+  <span class="chip-teal">Who We Are</span>
+  <div class="about-grid">
+    <div>
+      <h2 class="h2">About the Alliance</h2>
+      <p class="lead" style="margin-bottom:28px">We exist to bridge India's growing AI ecosystem with the global AI Safety movement — fostering research, collaboration, and policy engagement.</p>
+      <div class="rationale-box">
+        <h3>Why an Alliance / Hub?</h3>
+        <p>India's AI landscape is expanding rapidly, yet AI Safety research, coordination, and policy engagement remain fragmented. The India AIS Alliance creates a structured home for practitioners, researchers, and organisations to connect, share resources, and accelerate AI Safety goals — domestically and internationally.</p>
+      </div>
+      <div class="team-trio">
+        <div class="team-card"><div class="avi">A</div><div class="t-name">Aman</div><div class="t-role">Co-Founder</div></div>
+        <div class="team-card"><div class="avi">K</div><div class="t-name">Kunal</div><div class="t-role">Co-Founder</div></div>
+        <div class="team-card"><div class="avi">R</div><div class="t-name">Rujuta</div><div class="t-role">Co-Founder</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="advisory-box">
+        <div class="label">Advisory Board</div>
+        <div class="advisor-row">
+          <div class="advisor-avi">P</div>
+          <div>
+            <div class="advisor-name">Pratik Agarwal</div>
+            <span class="advisor-badge">Advisor</span>
+          </div>
+        </div>
+        <p class="advisor-bio">Providing strategic guidance on the Alliance's direction, partnerships, and international alignment with the broader AI Safety ecosystem.</p>
+        <div class="advisory-open">
+          <p>Advisory board expanding — seeking voices from policy, research, and industry.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- TOC -->
+<section class="sec-white" id="toc">
+  <span class="chip-teal">Strategic Direction</span>
+  <div class="toc-grid">
+    <div>
+      <h2 class="h2">Theory of Change</h2>
+      <p class="lead">Our theory of change is rooted in connecting India's existing capacity with international momentum — lowering the friction for India to participate in and contribute to global AI Safety.</p>
+      <p class="lead" style="margin-top:16px">We focus on translating international AIS frameworks to the Indian context: adapting them for local policy environments, research institutions, and the specific opportunities India faces as a major AI-developing nation.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><div class="p-num">01</div><div><h4>Implement International Projects Locally</h4><p>Bring global AIS initiatives, research, and frameworks into India's context.</p></div></div>
+      <div class="pillar"><div class="p-num">02</div><div><h4>Accelerate Domestic AIS Goals</h4><p>Coordinate India-specific AI Safety research, policy work, and capacity building.</p></div></div>
+      <div class="pillar"><div class="p-num">03</div><div><h4>Build Cross-Sector Coordination</h4><p>Bridge academia, civil society, government, and industry around shared AIS objectives.</p></div></div>
+      <div class="pillar"><div class="p-num">04</div><div><h4>Map & Strengthen the Ecosystem</h4><p>Maintain living intelligence on India's AI Safety landscape to guide collective action.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LANDSCAPE -->
+<section class="sec-bg2" id="landscape">
+  <span class="chip-gray">The Ecosystem</span>
+  <h2 class="h2">AIS Landscape in India</h2>
+  <p class="lead" style="margin-bottom:28px">Organisations and initiatives working on AI Safety across India — and international bodies relevant to the Indian context.</p>
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot d-india"></div>India-based</div>
+    <div class="leg-item"><div class="leg-dot d-intl"></div>International</div>
+    <div class="leg-item"><div class="leg-dot d-academic"></div>Academic</div>
+    <div class="leg-item"><div class="leg-dot d-policy"></div>Policy / Multilateral</div>
+  </div>
+  <div class="orgs-grid">
+    <div class="org-card"><div class="org-dot-c d-india"></div><div class="org-name">AI Safety India</div><div class="org-type">Community / Advocacy</div></div>
+    <div class="org-card"><div class="org-dot-c d-india"></div><div class="org-name">Groundless AI</div><div class="org-type">Research</div></div>
+    <div class="org-card"><div class="org-dot-c d-india"></div><div class="org-name">Impact Academy</div><div class="org-type">Education / Community</div></div>
+    <div class="org-card"><div class="org-dot-c d-india"></div><div class="org-name">Digital Futures Lab</div><div class="org-type">Research / Policy</div></div>
+    <div class="org-card"><div class="org-dot-c d-india"></div><div class="org-name">Carnegie India / IndiaAI</div><div class="org-type">Policy / Think Tank</div></div>
+    <div class="org-card"><div class="org-dot-c d-india"></div><div class="org-name">Lossfunk</div><div class="org-type">Research</div></div>
+    <div class="org-card"><div class="org-dot-c d-academic"></div><div class="org-name">IIT Madras</div><div class="org-type">Academic Research</div></div>
+    <div class="org-card"><div class="org-dot-c d-academic"></div><div class="org-name">IISc</div><div class="org-type">Academic Research</div></div>
+    <div class="org-card"><div class="org-dot-c d-intl"></div><div class="org-name">AI Safety Asia</div><div class="org-type">Regional Network</div></div>
+    <div class="org-card"><div class="org-dot-c d-intl"></div><div class="org-name">Apart Research</div><div class="org-type">Research / Grants</div></div>
+    <div class="org-card"><div class="org-dot-c d-intl"></div><div class="org-name">GovernAI</div><div class="org-type">Policy / Governance</div></div>
+    <div class="org-card"><div class="org-dot-c d-intl"></div><div class="org-name">FutureKind</div><div class="org-type">Longtermist Org</div></div>
+    <div class="org-card"><div class="org-dot-c d-intl"></div><div class="org-name">Electrisheep</div><div class="org-type">AI Safety</div></div>
+    <div class="org-card"><div class="org-dot-c d-policy"></div><div class="org-name">GIZ</div><div class="org-type">Development Agency</div></div>
+    <div class="org-card"><div class="org-dot-c d-policy"></div><div class="org-name">UNESCO</div><div class="org-type">Multilateral / Ethics</div></div>
+    <div class="org-card" style="border-style:dashed; opacity:0.45"><div class="org-name" style="color:var(--ink-dim)">+ More to be mapped</div><div class="org-type">In consultation</div></div>
+  </div>
+</section>
+
+<!-- PARTICIPATE -->
+<section class="sec-white" id="participate">
+  <span class="chip-teal">Get Involved</span>
+  <h2 class="h2">Join the Alliance</h2>
+  <p class="lead">Whether you're an organisation or an individual — there's a place for you in India's AIS community.</p>
+  <div class="part-cols">
+    <div class="part-col">
+      <div class="part-head">For Organisations</div>
+      <h3>Your Organisation</h3>
+      <p>Working on AI Safety in India? Join to collaborate, share resources, and be part of the ecosystem map.</p>
+      <ul class="part-list">
+        <li>Listed in the India AIS landscape</li>
+        <li>Access shared resources & research</li>
+        <li>Collaborate on joint initiatives</li>
+        <li>Connect with international orgs</li>
+      </ul>
+      <div class="form-mock">
+        <div class="form-label">Airtable — Interest Form</div>
+        <div class="form-field">Organisation Name</div>
+        <div class="form-field">Primary Focus Area</div>
+        <div class="form-field">Contact Email</div>
+        <button class="form-submit">Express Interest →</button>
+      </div>
+    </div>
+    <div class="part-col">
+      <div class="part-head">For Individuals</div>
+      <h3>You, Personally</h3>
+      <p>Researchers, students, policy professionals, and curious minds — connect with the community.</p>
+      <ul class="part-list">
+        <li>Connect with the AIS community</li>
+        <li>Access learning resources</li>
+        <li>Attend events & meetups</li>
+        <li>Contribute to open projects</li>
+      </ul>
+      <div class="form-mock">
+        <div class="form-label">Airtable — Interest Form</div>
+        <div class="form-field">Your Name</div>
+        <div class="form-field">Background / Affiliation</div>
+        <div class="form-field">Contact Email</div>
+        <button class="form-submit">Express Interest →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNATIONAL -->
+<section class="sec-bg" id="international">
+  <span class="chip-gray">Global Context</span>
+  <h2 class="h2">International AIS Organisations</h2>
+  <p class="lead">Key global bodies whose work is particularly relevant to India's AI Safety context.</p>
+  <div class="intl-grid">
+    <div class="intl-card"><div class="intl-name">AI Safety Asia</div><div class="intl-desc">Regional AIS network focused on Asian contexts and collaboration.</div><span class="intl-tag">Regional</span></div>
+    <div class="intl-card"><div class="intl-name">Safe AI Germany</div><div class="intl-desc">National AIS alliance — inspiration for our structure and model.</div><span class="intl-tag">Model Org</span></div>
+    <div class="intl-card"><div class="intl-name">AISafety.com</div><div class="intl-desc">Global AI Safety resource hub and community platform.</div><span class="intl-tag">Global Hub</span></div>
+    <div class="intl-card"><div class="intl-name">More TBD</div><div class="intl-desc">Further orgs to be mapped in consultation with advisors.</div><span class="intl-tag" style="background:#F0EEFF;color:#6B5CCC;border-color:rgba(107,92,204,0.2)">In Progress</span></div>
+  </div>
+</section>
+
+<!-- WA + NEWS -->
+<section class="sec-bg2" id="news">
+  <span class="chip-teal">Community & Updates</span>
+  <h2 class="h2">Stay Connected</h2>
+  <div class="comm-grid">
+    <div class="wa-card">
+      <div style="font-size:28px;margin-bottom:18px">💬</div>
+      <h3>WhatsApp Groups</h3>
+      <p>Join our curated WhatsApp communities for AIS researchers, practitioners, and enthusiasts across India.</p>
+      <a href="#" class="wa-btn-el">Register for WA Groups →</a>
+    </div>
+    <div class="news-card">
+      <div class="news-card-label">AI Safety & Ethics — India News</div>
+      <div class="news-row"><div class="news-bullet"></div><div><div class="news-hl">India's AI Governance Framework: What it Means for Safety Research</div><div class="news-src">via AI Safety Lists (Google Sheet)</div></div></div>
+      <div class="news-row"><div class="news-bullet"></div><div><div class="news-hl">New MEITY Guidelines Signal Shift Toward Responsible AI Development</div><div class="news-src">via AI Safety Lists (Google Sheet)</div></div></div>
+      <div class="news-row"><div class="news-bullet"></div><div><div class="news-hl">IIT Madras Launches AI Ethics Research Initiative</div><div class="news-src">via AI Safety Lists (Google Sheet)</div></div></div>
+      <a href="#" class="news-more">View all news →</a>
+    </div>
+  </div>
+</section>
+
+<!-- MAPPING -->
+<section class="sec-white" id="mapping">
+  <span class="chip-gray">Ecosystem Intelligence</span>
+  <h2 class="h2">Broader AI Landscape Mapping</h2>
+  <p class="lead">Comprehensive mapping of India's AI ecosystem — across safety, policy, industry, and research. Data from our live Google Sheet.</p>
+  <div class="map-tabs">
+    <button class="map-tab active" onclick="setTab(this)">All</button>
+    <button class="map-tab" onclick="setTab(this)">Policy & Govt</button>
+    <button class="map-tab" onclick="setTab(this)">Industry</button>
+    <button class="map-tab" onclick="setTab(this)">Academia</button>
+    <button class="map-tab" onclick="setTab(this)">Civil Society</button>
+  </div>
+  <table class="map-tbl">
+    <thead><tr><th>Organisation</th><th>Sector</th><th>Focus Areas</th><th>AIS Relevance</th><th>Location</th></tr></thead>
+    <tbody>
+      <tr><td><strong>MEITY</strong></td><td>Government</td><td><span class="tag-s">AI Policy</span><span class="tag-s">Regulation</span></td><td><span class="hi">High</span></td><td>New Delhi</td></tr>
+      <tr><td><strong>NITI Aayog</strong></td><td>Government</td><td><span class="tag-s">AI Strategy</span><span class="tag-s">Ethics</span></td><td><span class="hi">High</span></td><td>New Delhi</td></tr>
+      <tr><td><strong>Wadhwani AI</strong></td><td>Research / NGO</td><td><span class="tag-s">AI for Good</span><span class="tag-s">Social Impact</span></td><td><span class="med">Medium</span></td><td>Mumbai</td></tr>
+      <tr><td><strong>iSpirt</strong></td><td>Industry Body</td><td><span class="tag-s">Digital Public Goods</span></td><td><span class="med">Medium</span></td><td>Bangalore</td></tr>
+      <tr><td><strong>IIT Bombay</strong></td><td>Academia</td><td><span class="tag-s">ML Research</span><span class="tag-s">Safety</span></td><td><span class="hi">High</span></td><td>Mumbai</td></tr>
+    </tbody>
+  </table>
+  <div style="text-align:center;margin-top:18px"><a href="#" style="font-size:13px;color:var(--ink-mid);text-decoration:none;font-weight:500">View full mapping in Google Sheet →</a></div>
+</section>
+
+<!-- PAST WORK -->
+<section class="sec-bg" id="past">
+  <span class="chip-teal">Our Journey</span>
+  <h2 class="h2">Past Work</h2>
+  <p class="lead">Activities, events, and milestones that have shaped the India AIS community so far.</p>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-box">
+        <div class="tl-label">Virtual Event</div>
+        <div class="tl-title">India AIS Virtual Meetup + Mixer</div>
+        <div class="tl-body">An online event bringing together AIS practitioners and researchers across India for presentations, discussions, and community building.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-box">
+        <div class="tl-label">Community Building</div>
+        <div class="tl-title">AIS Meetup Outreach & WhatsApp Communities</div>
+        <div class="tl-body">Initiated structured outreach to identify India-based AIS stakeholders and launched curated WhatsApp groups for ongoing coordination.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot open"></div>
+      <div class="tl-box upcoming">
+        <div class="tl-label upcoming">Coming Up</div>
+        <div class="tl-title">Advisory Meeting & Strategic Planning</div>
+        <div class="tl-body">Bringing together the core team, advisory board, and key stakeholders to define the Alliance's roadmap and next steps.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-brand">India <em>AIS</em> Alliance</div>
+      <div class="f-desc">Connecting India's AI Safety ecosystem with the global movement. Building coordination infrastructure for safe AI — rooted in Indian context.</div>
+    </div>
+    <div>
+      <div class="f-col-h">Pages</div>
+      <ul class="f-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Theory of Change</a></li>
+        <li><a href="#">Landscape</a></li>
+        <li><a href="#">Past Work</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-h">Participate</div>
+      <ul class="f-links">
+        <li><a href="#">Organisations</a></li>
+        <li><a href="#">Individuals</a></li>
+        <li><a href="#">WA Groups</a></li>
+        <li><a href="#">International Orgs</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-h">Resources</div>
+      <ul class="f-links">
+        <li><a href="#">AI Landscape Map</a></li>
+        <li><a href="#">AIS News India</a></li>
+        <li><a href="#">Airtable Forms</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© India AIS Alliance</span>
+    <span>Built for India's AI Safety future 🇮🇳</span>
+  </div>
+</footer>
+
+<script>
+function setTab(el) {
+  document.querySelectorAll('.map-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+</script>
+</body>
+</html>
