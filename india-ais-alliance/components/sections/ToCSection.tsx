@@ -5,21 +5,16 @@ import { motion } from 'framer-motion'
 const pillars = [
   {
     num: '01',
-    title: 'Implement International Projects Locally',
-    desc: 'Bring global AIS initiatives, research, and frameworks into India\'s context.',
-  },
-  {
-    num: '02',
     title: 'Accelerate Domestic AIS Goals',
     desc: 'Coordinate India-specific AI Safety research, policy work, and capacity building.',
   },
   {
-    num: '03',
+    num: '02',
     title: 'Build Cross-Sector Coordination',
     desc: 'Bridge academia, civil society, government, and industry around shared AIS objectives.',
   },
   {
-    num: '04',
+    num: '03',
     title: 'Map & Strengthen the Ecosystem',
     desc: 'Maintain living intelligence on India\'s AI Safety landscape to guide collective action.',
   },
@@ -36,6 +31,7 @@ export default function ToCSection() {
       >
         <span className="chip-teal">Strategic Direction</span>
         <div
+          className="toc-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',

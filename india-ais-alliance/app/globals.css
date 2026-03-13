@@ -100,3 +100,95 @@ body {
     background: var(--teal-light) !important;
   }
 }
+
+/* ── Mobile Responsive ── */
+
+/* Tablet: <= 1024px */
+@media (max-width: 1024px) {
+  .sec-white,
+  .sec-bg,
+  .sec-bg2,
+  .sec-bg3 {
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+  }
+  .hero-anim {
+    width: 320px !important;
+    height: 320px !important;
+  }
+}
+
+/* Mobile: <= 768px */
+@media (max-width: 768px) {
+  /* Nav */
+  .nav-bar {
+    padding: 0 20px !important;
+  }
+  .nav-desktop {
+    display: none !important;
+  }
+  .nav-hamburger {
+    display: flex !important;
+  }
+
+  /* Sections */
+  .sec-white,
+  .sec-bg,
+  .sec-bg2,
+  .sec-bg3 {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+
+  /* Footer */
+  .footer-root {
+    padding: 48px 20px 32px !important;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 8px !important;
+    text-align: center !important;
+  }
+
+  /* Join Hub grid */
+  .join-hub-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Two-column grids → single column */
+  .about-grid,
+  .toc-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* Hero */
+  .hero-section {
+    padding: 100px 20px 60px !important;
+    min-height: auto !important;
+  }
+  .hero-content {
+    flex-direction: column !important;
+  }
+  .hero-anim {
+    display: none !important;
+  }
+
+  /* Nav logo text */
+  .nav-logo-text {
+    font-size: 11px !important;
+  }
+}
+
+/* Small mobile: <= 480px */
+@media (max-width: 480px) {
+  .nav-logo-text {
+    display: none !important;
+  }
+}

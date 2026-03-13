@@ -146,6 +146,7 @@ function EventCard({ event, index }: { event: EventData; index: number }) {
 
       {/* Image placeholders */}
       <div
+        className="about-grid"
         style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',

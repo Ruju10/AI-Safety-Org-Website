@@ -4,16 +4,24 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--bg-3)', borderTop: '1px solid var(--border)', padding: '72px 52px 40px' }}>
+    <footer
+      style={{
+        background: 'var(--bg-3)',
+        borderTop: '1px solid var(--border)',
+        padding: '72px 52px 40px',
+      }}
+      className="footer-root"
+    >
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '1.6fr 1fr 1fr 1fr',
+          gridTemplateColumns: '1.8fr 1fr 1fr',
           gap: 48,
           marginBottom: 52,
           paddingBottom: 48,
           borderBottom: '1px solid var(--border)',
         }}
+        className="footer-grid"
       >
         <div>
           <div
@@ -25,7 +33,7 @@ export default function Footer() {
               marginBottom: 10,
             }}
           >
-            India AI <em style={{ fontStyle: 'italic', color: 'var(--teal)' }}>Safety</em> Coordination Hub
+            India <em style={{ fontStyle: 'italic', color: 'var(--teal)' }}>AI Safety Coordination</em> Hub
           </div>
           <div
             style={{
@@ -47,32 +55,13 @@ export default function Footer() {
           <ul style={{ listStyle: 'none' }}>
             {[
               { href: '/about', label: 'About Us' },
-              { href: '/theory-of-change', label: 'Theory of Change' },
+              { href: '/about#toc', label: 'Theory of Change' },
+              { href: '/about#team', label: 'Team' },
               { href: '/landscape', label: 'Landscape' },
               { href: '/events', label: 'Events' },
+              { href: '/news', label: 'News' },
             ].map((l) => (
-              <li key={l.href} style={{ marginBottom: 10 }}>
-                <Link href={l.href} style={{ color: 'var(--ink-mid)', textDecoration: 'none', fontSize: 13.5, transition: 'color 0.15s' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--teal)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--ink-mid)')}
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16 }}>
-            Get Involved
-          </div>
-          <ul style={{ listStyle: 'none' }}>
-            {[
-              { href: '/get-involved', label: 'Join the Hub' },
-              { href: '/get-involved', label: 'WhatsApp Community' },
-            ].map((l, i) => (
-              <li key={i} style={{ marginBottom: 10 }}>
+              <li key={l.href + l.label} style={{ marginBottom: 10 }}>
                 <Link href={l.href} style={{ color: 'var(--ink-mid)', textDecoration: 'none', fontSize: 13.5, transition: 'color 0.15s' }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--teal)')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--ink-mid)')}
@@ -107,8 +96,17 @@ export default function Footer() {
         </div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 12, color: 'var(--ink-dim)' }}>
-        <span>© 2025 India AI Safety Coordination Hub. All rights reserved.</span>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          fontSize: 12,
+          color: 'var(--ink-dim)',
+        }}
+        className="footer-bottom"
+      >
+        <span>&copy; 2025 India <span style={{ color: 'var(--teal)' }}>AI Safety Coordination</span> Hub. All rights reserved.</span>
         <span>Building India&apos;s AI Safety Ecosystem</span>
       </div>
     </footer>
