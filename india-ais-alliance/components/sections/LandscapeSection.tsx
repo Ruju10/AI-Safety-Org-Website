@@ -19,6 +19,9 @@ function OrgCard({ org }: { org: LandscapeOrgEntry }) {
         padding: '18px 16px',
         position: 'relative',
         cursor: 'default',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column' as const,
       }}
     >
       <div
@@ -48,7 +51,7 @@ function OrgCard({ org }: { org: LandscapeOrgEntry }) {
           org.name
         )}
       </div>
-      <div style={{ fontSize: 11.5, color: 'var(--ink-dim)', marginBottom: 4 }}>{org.focus}</div>
+      <div style={{ fontSize: 11.5, color: 'var(--ink-dim)', marginBottom: 4, flex: 1 }}>{org.focus}</div>
       <div style={{ fontSize: 10.5, color: 'var(--ink-dim)', opacity: 0.7 }}>{org.location}</div>
     </motion.div>
   )

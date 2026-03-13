@@ -19,6 +19,7 @@ export default function AboutSection() {
       >
         <span className="chip-teal">Who We Are</span>
         <div
+          className="about-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
@@ -55,8 +56,9 @@ export default function AboutSection() {
               </h3>
               <p style={{ fontSize: 14.5, color: 'var(--ink-mid)', lineHeight: 1.8 }}>
                 India&apos;s AI landscape is expanding rapidly, yet AI Safety research,
-                coordination, and policy engagement remain fragmented. The India AI Safety
-                Coordination Hub creates a structured home for practitioners, researchers, and
+                coordination, and policy engagement remain fragmented. The India{' '}
+                <span style={{ color: 'var(--teal)' }}>AI Safety Coordination</span>{' '}
+                Hub creates a structured home for practitioners, researchers, and
                 organisations to connect, share resources, and accelerate AI Safety goals —
                 domestically and internationally.
               </p>
@@ -123,7 +125,7 @@ export default function AboutSection() {
               ))}
 
               <Link
-                href="/team"
+                href="/about#team"
                 style={{
                   display: 'inline-block',
                   marginTop: 20,

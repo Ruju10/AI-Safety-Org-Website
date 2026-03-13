@@ -165,6 +165,7 @@ export default function GetInvolvedSection() {
             transition={{ duration: 0.3 }}
           >
             <div
+              className="about-grid"
               style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',

@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import AboutSection from '@/components/sections/AboutSection'
 import ToCSection from '@/components/sections/ToCSection'
+import TeamSection from '@/components/sections/TeamSection'
 
 export const metadata: Metadata = {
   title: 'About Us | India AI Safety Coordination Hub',
-  description: 'Learn about the India AI Safety Coordination Hub — our team, mission, and advisory board.',
+  description: 'Learn about the India AI Safety Coordination Hub — our team, mission, and theory of change.',
 }
 
 export default function AboutPage() {
@@ -13,6 +14,8 @@ export default function AboutPage() {
       <AboutSection />
       <div className="rule" />
       <ToCSection />
+      <div className="rule" />
+      <TeamSection />
     </div>
   )
 }
