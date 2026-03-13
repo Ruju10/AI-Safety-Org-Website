@@ -7,6 +7,7 @@ export interface TeamMember {
   initial: string
   name: string
   role: string
+  photo?: string
 }
 
 export interface Advisor {
@@ -14,10 +15,11 @@ export interface Advisor {
   name: string
   affiliation: string
   description: string
+  photo?: string
 }
 
 export const coreTeam: TeamMember[] = [
-  { initial: 'A', name: 'Aman Agarwal', role: 'Founder' },
+  { initial: 'A', name: 'Aman Agarwal', role: '' },
   { initial: 'K', name: 'Kunal Singh', role: '' },
   { initial: 'R', name: 'Rujuta Karekar', role: '' },
 ]

@@ -31,7 +31,7 @@ export default function Timeline({ items }: TimelineProps) {
           key={i}
           initial={{ opacity: 0, x: -16 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: false, margin: '-80px' }}
           transition={{ duration: 0.4, delay: i * 0.1 }}
           style={{ position: 'relative', paddingLeft: 46, marginBottom: 24 }}
         >

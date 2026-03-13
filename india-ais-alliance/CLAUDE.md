@@ -49,7 +49,7 @@ All colors and spacing live as CSS vars (`--teal`, `--ink`, `--ink-mid`, `--ink-
 
 ### Animation conventions (Framer Motion)
 
-- Scroll-triggered entry: `whileInView={{ opacity: 1, y: 0 }}` with `initial={{ opacity: 0, y: 24 }}` and `viewport={{ once: true, margin: '-80px' }}`
+- Scroll-triggered entry: `whileInView={{ opacity: 1, y: 0 }}` with `initial={{ opacity: 0, y: 24 }}` and `viewport={{ once: false, margin: '-80px' }}`
 - Card hover: `whileHover={{ y: -4, boxShadow: '...' }}`
 - Filtered grids: wrap items in `<AnimatePresence mode="popLayout">` with `layout` prop on the grid container
 

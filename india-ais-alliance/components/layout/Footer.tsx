@@ -8,7 +8,7 @@ export default function Footer() {
       style={{
         background: 'var(--bg-3)',
         borderTop: '1px solid var(--border)',
-        padding: '72px 52px 40px',
+        padding: '36px 52px 24px',
       }}
       className="footer-root"
     >
@@ -16,9 +16,9 @@ export default function Footer() {
         style={{
           display: 'grid',
           gridTemplateColumns: '1.8fr 1fr 1fr',
-          gap: 48,
-          marginBottom: 52,
-          paddingBottom: 48,
+          gap: 32,
+          marginBottom: 24,
+          paddingBottom: 24,
           borderBottom: '1px solid var(--border)',
         }}
         className="footer-grid"
@@ -52,16 +52,16 @@ export default function Footer() {
           <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--ink-dim)', marginBottom: 16 }}>
             Pages
           </div>
-          <ul style={{ listStyle: 'none' }}>
+          <ul style={{ listStyle: 'none', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px 24px' }}>
             {[
               { href: '/about', label: 'About Us' },
               { href: '/about#toc', label: 'Theory of Change' },
-              { href: '/about#team', label: 'Team' },
+              { href: '/about#team', label: 'Our Team' },
               { href: '/landscape', label: 'Landscape' },
               { href: '/events', label: 'Events' },
               { href: '/news', label: 'News' },
             ].map((l) => (
-              <li key={l.href + l.label} style={{ marginBottom: 10 }}>
+              <li key={l.href + l.label}>
                 <Link href={l.href} style={{ color: 'var(--ink-mid)', textDecoration: 'none', fontSize: 13.5, transition: 'color 0.15s' }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--teal)')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--ink-mid)')}
@@ -81,9 +81,8 @@ export default function Footer() {
             {[
               { href: '/news', label: 'AIS News India' },
               { href: '/mapping', label: 'AI Landscape Map' },
-              { href: '/landscape', label: 'Org Directory' },
             ].map((l) => (
-              <li key={l.href} style={{ marginBottom: 10 }}>
+              <li key={l.href} style={{ marginBottom: 6 }}>
                 <Link href={l.href} style={{ color: 'var(--ink-mid)', textDecoration: 'none', fontSize: 13.5, transition: 'color 0.15s' }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--teal)')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--ink-mid)')}

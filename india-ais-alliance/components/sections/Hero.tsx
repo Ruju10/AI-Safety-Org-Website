@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import OrbitCanvas from '@/components/visualizations/OrbitCanvas'
 
 const heroLines = ['India', 'AI Safety', 'Coordination', 'Hub']
 
@@ -149,182 +150,12 @@ export default function Hero() {
           transition={{ duration: 1.2, delay: 0.3 }}
           style={{
             position: 'relative',
-            width: 420,
-            height: 420,
+            width: 680,
+            height: 680,
             flexShrink: 0,
-            overflow: 'hidden',
           }}
         >
-          {/* Clip to show only left 180° of orbits */}
-          <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', borderRadius: '0 50% 50% 0' }}>
-            {/* Soft glow behind orbits */}
-            <div style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              width: 300,
-              height: 300,
-              marginTop: -150,
-              marginLeft: -150,
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(13,122,107,0.08) 0%, transparent 70%)',
-              pointerEvents: 'none',
-            }} />
-          </div>
-
-          <svg
-            viewBox="0 0 420 420"
-            width="420"
-            height="420"
-            style={{ position: 'absolute', inset: 0 }}
-          >
-            <defs>
-              {/* Fade mask — only right half visible */}
-              <mask id="half-mask">
-                <rect x="100" y="0" width="320" height="420" fill="white" />
-                <rect x="100" y="0" width="60" height="420" fill="url(#fade-left)" />
-              </mask>
-              <linearGradient id="fade-left" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="black" />
-                <stop offset="100%" stopColor="white" />
-              </linearGradient>
-
-              {/* Animated dash for trajectory lines */}
-              <style>{`
-                @keyframes dash-flow {
-                  to { stroke-dashoffset: -40; }
-                }
-                @keyframes dash-flow-rev {
-                  to { stroke-dashoffset: 40; }
-                }
-                .traj { animation: dash-flow 3s linear infinite; }
-                .traj-rev { animation: dash-flow-rev 4s linear infinite; }
-                .traj-slow { animation: dash-flow 6s linear infinite; }
-
-                @keyframes orbit1 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-                @keyframes orbit-rev { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
-                .orbit-60 { animation: orbit1 60s linear infinite; transform-origin: 210px 210px; }
-                .orbit-45 { animation: orbit1 45s linear infinite; transform-origin: 210px 210px; }
-                .orbit-35-rev { animation: orbit-rev 35s linear infinite; transform-origin: 210px 210px; }
-                .orbit-50 { animation: orbit1 50s linear infinite; transform-origin: 210px 210px; }
-                .orbit-28-rev { animation: orbit-rev 28s linear infinite; transform-origin: 210px 210px; }
-                .orbit-70 { animation: orbit1 70s linear infinite; transform-origin: 210px 210px; }
-                .orbit-40-rev { animation: orbit-rev 40s linear infinite; transform-origin: 210px 210px; }
-
-                @keyframes float1 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-                @keyframes float2 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
-                @keyframes float3 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(6px,-6px); } }
-                .float-1 { animation: float1 5s ease-in-out infinite; }
-                .float-2 { animation: float2 6s ease-in-out infinite; }
-                .float-3 { animation: float3 7s ease-in-out infinite; }
-
-                @keyframes pulse-glow { 0%,100% { opacity:0.3; r:42; } 50% { opacity:0.7; r:50; } }
-                .center-glow { animation: pulse-glow 4s ease-in-out infinite; }
-              `}</style>
-            </defs>
-
-            <g mask="url(#half-mask)">
-              {/* Orbit rings — thicker, more visible */}
-              <circle cx="210" cy="210" r="190" fill="none" stroke="#DDD9D0" strokeWidth="1.5" />
-              <circle cx="210" cy="210" r="150" fill="none" stroke="rgba(13,122,107,0.18)" strokeWidth="1.2" strokeDasharray="6 4" />
-              <circle cx="210" cy="210" r="110" fill="none" stroke="#DDD9D0" strokeWidth="1.5" />
-              <circle cx="210" cy="210" r="70" fill="none" stroke="rgba(13,122,107,0.15)" strokeWidth="1" strokeDasharray="4 6" />
-
-              {/* Animated trajectory lines between dots */}
-              {/* Outer to mid-outer */}
-              <path d="M 210 20 Q 340 100 360 210" fill="none" stroke="rgba(13,122,107,0.12)" strokeWidth="1" strokeDasharray="8 8" className="traj" />
-              <path d="M 400 210 Q 380 340 210 400" fill="none" stroke="rgba(176,57,154,0.12)" strokeWidth="1" strokeDasharray="6 10" className="traj-rev" />
-              {/* Mid to inner */}
-              <path d="M 320 210 Q 290 130 210 100" fill="none" stroke="rgba(59,111,212,0.12)" strokeWidth="1" strokeDasharray="6 8" className="traj-slow" />
-              <path d="M 210 320 Q 300 290 320 210" fill="none" stroke="rgba(196,122,27,0.12)" strokeWidth="1" strokeDasharray="5 10" className="traj" />
-              {/* Cross trajectories */}
-              <path d="M 270 60 Q 350 180 300 340" fill="none" stroke="rgba(13,122,107,0.08)" strokeWidth="0.8" strokeDasharray="4 12" className="traj-rev" />
-              <path d="M 360 120 Q 280 210 340 330" fill="none" stroke="rgba(107,92,231,0.08)" strokeWidth="0.8" strokeDasharray="6 8" className="traj-slow" />
-
-              {/* ── Orbiting dots on rings ── */}
-
-              {/* Ring 1 (r=190) — 3 dots */}
-              <g className="orbit-60">
-                <circle cx="210" cy="20" r="7" fill="#0D7A6B" opacity="0.8" />
-              </g>
-              <g className="orbit-45">
-                <circle cx="400" cy="210" r="5" fill="#B0399A" opacity="0.7" />
-              </g>
-              <g className="orbit-70">
-                <circle cx="210" cy="400" r="4" fill="#E05252" opacity="0.6" />
-              </g>
-
-              {/* Ring 2 (r=150) — 3 dots */}
-              <g className="orbit-35-rev">
-                <circle cx="360" cy="210" r="6" fill="#C47A1B" opacity="0.75" />
-              </g>
-              <g className="orbit-50">
-                <circle cx="210" cy="60" r="4.5" fill="#3B6FD4" opacity="0.65" />
-              </g>
-              <g className="orbit-40-rev">
-                <circle cx="60" cy="210" r="3.5" fill="#6B5CE7" opacity="0.6" />
-              </g>
-
-              {/* Ring 3 (r=110) — 3 dots */}
-              <g className="orbit-45">
-                <circle cx="320" cy="210" r="5.5" fill="#0D7A6B" opacity="0.7" />
-              </g>
-              <g className="orbit-28-rev">
-                <circle cx="210" cy="100" r="4" fill="#E05252" opacity="0.65" />
-              </g>
-              <g className="orbit-60">
-                <circle cx="100" cy="210" r="3" fill="#B0399A" opacity="0.55" />
-              </g>
-
-              {/* Ring 4 (r=70) — 2 dots */}
-              <g className="orbit-35-rev">
-                <circle cx="280" cy="210" r="4.5" fill="#3B6FD4" opacity="0.7" />
-              </g>
-              <g className="orbit-50">
-                <circle cx="210" cy="140" r="3.5" fill="#C47A1B" opacity="0.6" />
-              </g>
-
-              {/* Floating ambient dots (not on rings) */}
-              <circle cx="330" cy="80" r="2.5" fill="#0D7A6B" opacity="0.35" className="float-1" />
-              <circle cx="370" cy="310" r="3" fill="#B0399A" opacity="0.3" className="float-2" />
-              <circle cx="280" cy="370" r="2" fill="#6B5CE7" opacity="0.3" className="float-3" />
-              <circle cx="390" cy="160" r="2" fill="#E05252" opacity="0.25" className="float-1" />
-              <circle cx="250" cy="45" r="1.5" fill="#C47A1B" opacity="0.3" className="float-2" />
-              <circle cx="350" cy="260" r="2.5" fill="#3B6FD4" opacity="0.25" className="float-3" />
-              <circle cx="300" cy="150" r="1.5" fill="#0D7A6B" opacity="0.2" className="float-1" />
-              <circle cx="260" cy="300" r="2" fill="#B0399A" opacity="0.2" className="float-2" />
-
-              {/* Center glow */}
-              <circle cx="210" cy="210" r="42" fill="rgba(13,122,107,0.08)" className="center-glow" />
-            </g>
-          </svg>
-
-          {/* Center icon (on top of SVG) */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              width: 48,
-              height: 48,
-              marginTop: -24,
-              marginLeft: -24,
-              borderRadius: 10,
-              border: '2px solid rgba(13,122,107,0.3)',
-              background: 'var(--white)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontFamily: 'var(--font-fraunces)',
-              fontSize: 20,
-              fontWeight: 600,
-              color: 'var(--teal)',
-              boxShadow: '0 4px 20px rgba(13,122,107,0.1)',
-              zIndex: 2,
-            }}
-          >
-            I
-          </div>
+          <OrbitCanvas />
         </motion.div>
       </div>
     </section>

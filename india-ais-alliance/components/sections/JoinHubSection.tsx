@@ -3,18 +3,14 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-const events = [
-  { date: 'Feb 4, 2026', title: 'AI Safety & Governance Virtual Event' },
-  { date: 'Feb 17, 2026', title: 'AI Safety Mixer' },
-]
 
 export default function JoinHubSection() {
   return (
-    <section className="sec-bg2" id="join-hub">
+    <section className="sec-bg2" id="join-hub" style={{ height: '100%' }}>
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
+        viewport={{ once: false, margin: '-80px' }}
         transition={{ duration: 0.5 }}
       >
         <span className="chip-teal">Join Us</span>
@@ -24,17 +20,7 @@ export default function JoinHubSection() {
           practitioners building a safer AI future together.
         </p>
 
-        <div
-          className="join-hub-grid"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: 28,
-            marginTop: 40,
-            alignItems: 'start',
-          }}
-        >
-          {/* Left: CTA card */}
+        <div style={{ marginTop: 40 }}>
           <div
             style={{
               background: 'var(--teal)',
@@ -59,7 +45,7 @@ export default function JoinHubSection() {
             <h3
               style={{
                 fontFamily: 'var(--font-fraunces)',
-                fontSize: 26,
+                fontSize: 30,
                 marginBottom: 14,
                 position: 'relative',
               }}
@@ -68,7 +54,7 @@ export default function JoinHubSection() {
             </h3>
             <p
               style={{
-                fontSize: 14,
+                fontSize: 16,
                 opacity: 0.85,
                 lineHeight: 1.75,
                 marginBottom: 28,
@@ -92,7 +78,7 @@ export default function JoinHubSection() {
                   textDecoration: 'none',
                   padding: '14px 20px',
                   borderRadius: 8,
-                  fontSize: 13.5,
+                  fontSize: 15,
                   fontWeight: 600,
                 }}
               >
@@ -110,7 +96,7 @@ export default function JoinHubSection() {
                   textDecoration: 'none',
                   padding: '14px 20px',
                   borderRadius: 8,
-                  fontSize: 13.5,
+                  fontSize: 15,
                   fontWeight: 600,
                   border: '1px solid rgba(255,255,255,0.2)',
                 }}
@@ -129,7 +115,7 @@ export default function JoinHubSection() {
                   textDecoration: 'none',
                   padding: '14px 20px',
                   borderRadius: 8,
-                  fontSize: 13.5,
+                  fontSize: 15,
                   fontWeight: 600,
                   border: '1px solid rgba(255,255,255,0.2)',
                 }}
@@ -138,74 +124,6 @@ export default function JoinHubSection() {
                 Join WhatsApp Community
               </Link>
             </div>
-          </div>
-
-          {/* Right: Events list */}
-          <div
-            style={{
-              background: 'var(--white)',
-              border: '1px solid var(--border)',
-              borderRadius: 14,
-              padding: '32px 30px',
-            }}
-          >
-            <div
-              style={{
-                fontSize: 10.5,
-                fontWeight: 700,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'var(--ink-dim)',
-                marginBottom: 20,
-              }}
-            >
-              Events
-            </div>
-            {events.map((event, i) => (
-              <div
-                key={event.title}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 16,
-                  padding: '16px 0',
-                  borderBottom: i < events.length - 1 ? '1px solid var(--border)' : 'none',
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: 11,
-                    fontWeight: 600,
-                    letterSpacing: '0.04em',
-                    textTransform: 'uppercase',
-                    color: 'var(--teal)',
-                    background: 'rgba(13,122,107,0.08)',
-                    borderRadius: 6,
-                    padding: '5px 12px',
-                    flexShrink: 0,
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {event.date}
-                </div>
-                <div style={{ fontSize: 14, fontWeight: 500, color: 'var(--ink)' }}>
-                  {event.title}
-                </div>
-              </div>
-            ))}
-            <Link
-              href="/events"
-              style={{
-                display: 'inline-block',
-                marginTop: 20,
-                fontSize: 13,
-                fontWeight: 600,
-                color: 'var(--teal)',
-                textDecoration: 'none',
-              }}
-            >
-              View all events →
-            </Link>
           </div>
         </div>
       </motion.div>
