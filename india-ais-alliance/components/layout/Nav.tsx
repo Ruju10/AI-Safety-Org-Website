@@ -12,7 +12,7 @@ const links = [
     dropdown: [
       { href: '/about', label: 'About Us' },
       { href: '/about#toc', label: 'Theory of Change' },
-      { href: '/about#team', label: 'Team' },
+      { href: '/about#team', label: 'Our Team' },
     ],
   },
   { href: '/landscape', label: 'Landscape' },
@@ -119,6 +119,7 @@ export default function Nav() {
               >
                 <Link
                   href={l.href}
+                  className="nav-link"
                   style={{
                     color: isAboutActive ? '#14130F' : '#4A4844',
                     textDecoration: 'none',
@@ -164,22 +165,14 @@ export default function Nav() {
                           <Link
                             key={d.href + d.label}
                             href={d.href}
+                            className="nav-dropdown-item"
                             style={{
                               display: 'block',
                               padding: '10px 20px',
                               fontSize: 13,
                               color: 'var(--ink-mid)',
                               textDecoration: 'none',
-                              transition: 'all 0.15s',
                               fontWeight: 400,
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.color = 'var(--teal)'
-                              e.currentTarget.style.background = 'var(--bg)'
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.color = 'var(--ink-mid)'
-                              e.currentTarget.style.background = 'transparent'
                             }}
                           >
                             {d.label}
@@ -194,6 +187,7 @@ export default function Nav() {
               <li key={l.href}>
                 <Link
                   href={l.href}
+                  className="nav-link"
                   style={{
                     color: pathname === l.href ? '#14130F' : '#4A4844',
                     textDecoration: 'none',
@@ -210,9 +204,45 @@ export default function Nav() {
             )
           )}
           <li>
-            <Link href="/get-involved" className="nav-pill">
-              Join →
-            </Link>
+            {/* Comet border wrapper */}
+            <div style={{
+              position: 'relative',
+              display: 'inline-block',
+              borderRadius: 100,
+              padding: 1.5,
+              overflow: 'hidden',
+            }}>
+              {/* Spinning comet gradient */}
+              <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: '300%',
+                paddingTop: '300%',
+                marginLeft: '-150%',
+                marginTop: '-150%',
+                background: 'conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgba(13,122,107,0.15) 300deg, rgba(13,122,107,0.5) 330deg, #0D7A6B 350deg, #2EB89A 360deg)',
+                animation: 'comet-orbit 2.4s linear infinite',
+              }} />
+              {/* Inner button */}
+              <Link href="/get-involved" style={{
+                position: 'relative',
+                zIndex: 1,
+                display: 'block',
+                padding: '6px 16px',
+                borderRadius: 100,
+                background: 'var(--bg)',
+                fontSize: '0.75rem',
+                fontWeight: 400,
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                color: 'var(--teal)',
+                textDecoration: 'none',
+                whiteSpace: 'nowrap',
+              }}>
+                Join →
+              </Link>
+            </div>
           </li>
         </ul>
 

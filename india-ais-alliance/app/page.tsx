@@ -1,6 +1,7 @@
 import Hero from '@/components/sections/Hero'
 import AboutSection from '@/components/sections/AboutSection'
 import ToCSection from '@/components/sections/ToCSection'
+import EventsSummarySection from '@/components/sections/EventsSummarySection'
 import JoinHubSection from '@/components/sections/JoinHubSection'
 
 export const revalidate = 3600
@@ -11,7 +12,10 @@ export default async function Home() {
       <Hero />
       <AboutSection />
       <ToCSection />
-      <JoinHubSection />
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+        <EventsSummarySection />
+        <JoinHubSection />
+      </div>
     </>
   )
 }
