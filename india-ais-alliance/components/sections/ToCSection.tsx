@@ -5,18 +5,18 @@ import { motion } from 'framer-motion'
 const pillars = [
   {
     num: '01',
-    title: 'Accelerate Domestic AIS Goals',
-    desc: 'Coordinate India-specific AI Safety research, policy work, and capacity building.',
+    title: "Accelerate India's AI Safety Contribution",
+    desc: 'Strengthen domestic research, policy capacity, and institutional readiness to engage with global AI safety challenges.',
   },
   {
     num: '02',
-    title: 'Build Cross-Sector Coordination',
-    desc: 'Bridge academia, civil society, government, and industry around shared AIS objectives.',
+    title: 'Connect Sectors Around Shared Goals',
+    desc: 'Bring together academia, civil society, government, and industry to align on AI safety priorities.',
   },
   {
     num: '03',
     title: 'Map & Strengthen the Ecosystem',
-    desc: 'Maintain living intelligence on India\'s AI Safety landscape to guide collective action.',
+    desc: "Maintain a continuously updated view of India's AI Safety landscape to guide collective action.",
   },
 ]
 
@@ -30,10 +30,6 @@ const fade = (delay = 0) => ({
 export default function ToCSection() {
   return (
     <section className="sec-white" id="toc">
-      <motion.div {...fade(0)}>
-        <span className="chip-teal">Strategic Direction</span>
-      </motion.div>
-
       <div
         className="toc-grid"
         style={{
@@ -41,21 +37,20 @@ export default function ToCSection() {
           gridTemplateColumns: '1fr 1fr',
           gap: 72,
           alignItems: 'center',
-          marginTop: 40,
         }}
       >
         {/* Left: text */}
         <div>
-          <motion.h2 className="h2" {...fade(0.05)}>Theory of Change</motion.h2>
-          <motion.p className="lead" {...fade(0.1)}>
-            Our theory of change is rooted in connecting India&apos;s existing capacity with
-            international momentum — lowering the friction for India to participate in and
-            contribute to global AI Safety.
+          <motion.h2 className="h2" {...fade(0)}>What We&apos;re Working Towards</motion.h2>
+          <motion.p className="lead" {...fade(0.05)}>
+            Working to lower the friction for India&apos;s researchers, institutions, and
+            policymakers to participate in and shape global AI Safety — turning fragmented local
+            energy into sustained international contribution.
           </motion.p>
-          <motion.p className="lead" style={{ marginTop: 16 }} {...fade(0.15)}>
-            We focus on translating international AIS frameworks to the Indian context: adapting
-            them for local policy environments, research institutions, and the specific
-            opportunities India faces as a major AI-developing nation.
+          <motion.p className="lead" style={{ marginTop: 16 }} {...fade(0.1)}>
+            This means translating international AI Safety frameworks to the Indian context:
+            adapting them for local policy environments, research institutions, and the specific
+            opportunities available to India as a major AI-developing nation.
           </motion.p>
         </div>
 

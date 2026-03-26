@@ -43,8 +43,8 @@ export default function Footer() {
               fontWeight: 300,
             }}
           >
-            Coordinating India&apos;s AI Safety ecosystem — connecting researchers, organisations,
-            and policy practitioners with the global movement.
+            Building the connective infrastructure for AI Safety work across India — and linking
+            it with the global movement.
           </div>
         </div>
 
@@ -59,6 +59,7 @@ export default function Footer() {
               { href: '/about#team', label: 'Our Team' },
               { href: '/landscape', label: 'Landscape' },
               { href: '/events', label: 'Events' },
+              { href: '/contact', label: 'Contact Us' },
               { href: '/news', label: 'News' },
             ].map((l) => (
               <li key={l.href + l.label}>

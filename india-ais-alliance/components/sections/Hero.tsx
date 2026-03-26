@@ -123,8 +123,8 @@ export default function Hero() {
               marginBottom: 44,
             }}
           >
-            A coordination hub for researchers, organisations, and policy practitioners working on AI
-            Safety across India — connecting local efforts with global momentum.
+            Bridging India&apos;s growing AI safety work with the global movement — through shared
+            research, policy dialogue, and cross-sector connection.
           </motion.p>
 
           <motion.div
@@ -133,11 +133,11 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.55 }}
             style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}
           >
-            <Link href="/landscape" className="btn-teal">
-              Explore the Landscape
-            </Link>
-            <Link href="#join-hub" className="btn-ghost">
+            <Link href="#join-hub" className="btn-teal">
               Join the Hub →
+            </Link>
+            <Link href="/landscape" className="btn-ghost">
+              Explore the Landscape
             </Link>
           </motion.div>
         </div>
