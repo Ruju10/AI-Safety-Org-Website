@@ -13,6 +13,8 @@ export interface LandscapeOrgEntry {
   focus: string
   location: string
   website: string
+  /** True for orgs explicitly working on AI Safety (research, advocacy, coordination, education) */
+  aiSafety?: boolean
 }
 
 export const CATEGORIES = [
@@ -151,6 +153,7 @@ const landscapeOrgs: LandscapeOrgEntry[] = [
     focus: 'Community Building & AIS Advocacy',
     location: 'India',
     website: '',
+    aiSafety: true,
   },
   {
     id: 'rng-2',
@@ -159,6 +162,7 @@ const landscapeOrgs: LandscapeOrgEntry[] = [
     focus: 'AI Safety Research',
     location: 'India',
     website: '',
+    aiSafety: true,
   },
   {
     id: 'rng-3',
@@ -167,6 +171,7 @@ const landscapeOrgs: LandscapeOrgEntry[] = [
     focus: 'AI Safety Education & Community',
     location: 'India',
     website: '',
+    aiSafety: true,
   },
   {
     id: 'rng-4',
@@ -183,6 +188,7 @@ const landscapeOrgs: LandscapeOrgEntry[] = [
     focus: 'AI Safety Coordination & Networking',
     location: 'India',
     website: '',
+    aiSafety: true,
   },
   {
     id: 'rng-6',
@@ -191,6 +197,7 @@ const landscapeOrgs: LandscapeOrgEntry[] = [
     focus: 'Regional AIS Network (Asia Focus)',
     location: 'Asia / India',
     website: '',
+    aiSafety: true,
   },
 
   // ── Think Tank & Policy ─────────────────────────────────────

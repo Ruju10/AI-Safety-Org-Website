@@ -57,11 +57,21 @@ function OrgCard({ org }: { org: LandscapeOrgEntry }) {
   )
 }
 
-export default function LandscapeSection() {
-  const [activeTab, setActiveTab] = useState('All')
+const aiSafetyOrgs = landscapeOrgs.filter((o) => o.aiSafety)
+const ecosystemOrgs = landscapeOrgs.filter((o) => !o.aiSafety)
 
-  const filtered =
-    activeTab === 'All' ? landscapeOrgs : landscapeOrgs.filter((o) => o.category === activeTab)
+// Preserve category order from CATEGORIES for the ecosystem filter tabs
+const ecosystemCategories = ['All', ...CATEGORIES.slice(1).filter(
+  (cat) => ecosystemOrgs.some((o) => o.category === cat)
+)]
+
+export default function LandscapeSection() {
+  const [activeCategory, setActiveCategory] = useState('All')
+
+  const filteredEcosystem =
+    activeCategory === 'All'
+      ? ecosystemOrgs
+      : ecosystemOrgs.filter((o) => o.category === activeCategory)
 
   return (
     <section className="sec-bg2" id="landscape">
@@ -73,13 +83,13 @@ export default function LandscapeSection() {
       >
         <span className="chip-gray">The Ecosystem</span>
         <h2 className="h2">Explore the Landscape</h2>
-        <p className="lead" style={{ marginBottom: 28 }}>
-          Indian organisations, institutions, and labs working on AI Safety — across government,
-          academia, research, policy, and frontier AI.
+        <p className="lead" style={{ marginBottom: 36 }}>
+          India&apos;s AI Safety organisations alongside the labs, institutions, think tanks, and
+          government bodies shaping how AI develops here.
         </p>
 
         {/* Legend */}
-        <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', marginBottom: 24 }}>
+        <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', marginBottom: 48 }}>
           {Object.entries(CATEGORY_COLORS).map(([label, color]) => (
             <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 12, color: 'var(--ink-mid)' }}>
               <div style={{ width: 8, height: 8, borderRadius: '50%', background: color }} />
@@ -88,58 +98,120 @@ export default function LandscapeSection() {
           ))}
         </div>
 
-        {/* Filter tabs */}
-        <div style={{ display: 'flex', gap: 5, marginBottom: 24, flexWrap: 'wrap' }}>
-          {CATEGORIES.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
+        {/* ── Section 1: AI Safety Organisations ── */}
+        <div style={{ marginBottom: 56 }}>
+          <div style={{ marginBottom: 20 }}>
+            <h3
               style={{
-                padding: '7px 16px',
-                borderRadius: 100,
-                fontSize: 12,
-                fontWeight: 500,
-                cursor: 'pointer',
-                border: '1px solid var(--border)',
-                color: activeTab === tab ? '#fff' : 'var(--ink-mid)',
-                background: activeTab === tab ? 'var(--ink)' : 'var(--white)',
-                borderColor: activeTab === tab ? 'var(--ink)' : 'var(--border)',
-                transition: 'all 0.15s',
-                fontFamily: 'var(--font-outfit)',
+                fontFamily: 'var(--font-fraunces)',
+                fontSize: 'clamp(22px, 2.5vw, 30px)',
+                fontWeight: 700,
+                color: 'var(--ink)',
+                marginBottom: 8,
               }}
             >
-              {tab}
-              <span style={{ marginLeft: 6, opacity: 0.6, fontSize: 11 }}>
-                {tab === 'All' ? landscapeOrgs.length : landscapeOrgs.filter((o) => o.category === tab).length}
-              </span>
-            </button>
-          ))}
+              AI Safety Organisations
+            </h3>
+            <p style={{ fontSize: 14, color: 'var(--ink-mid)', lineHeight: 1.6 }}>
+              Organisations explicitly focused on AI Safety research, advocacy, education, and coordination in India.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+              gap: 10,
+            }}
+          >
+            {aiSafetyOrgs.map((org) => (
+              <OrgCard key={org.id} org={org} />
+            ))}
+          </div>
         </div>
 
-        {/* Grid */}
-        <motion.div
-          layout
+        {/* Divider */}
+        <div
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-            gap: 10,
+            borderTop: '1px solid var(--border)',
+            marginBottom: 48,
           }}
-        >
-          <AnimatePresence mode="popLayout">
-            {filtered.map((org) => (
-              <motion.div
-                key={org.id}
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+        />
+
+        {/* ── Section 2: The Broader AI Ecosystem ── */}
+        <div>
+          <div style={{ marginBottom: 20 }}>
+            <h3
+              style={{
+                fontFamily: 'var(--font-fraunces)',
+                fontSize: 'clamp(22px, 2.5vw, 30px)',
+                fontWeight: 700,
+                color: 'var(--ink)',
+                marginBottom: 8,
+              }}
+            >
+              The Broader AI Ecosystem
+            </h3>
+            <p style={{ fontSize: 14, color: 'var(--ink-mid)', lineHeight: 1.6 }}>
+              Labs, government bodies, academic institutions, think tanks, and civil society shaping AI development and governance in India.
+            </p>
+          </div>
+
+          {/* Filter tabs */}
+          <div style={{ display: 'flex', gap: 5, marginBottom: 24, flexWrap: 'wrap' }}>
+            {ecosystemCategories.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveCategory(tab)}
+                style={{
+                  padding: '7px 16px',
+                  borderRadius: 100,
+                  fontSize: 12,
+                  fontWeight: 500,
+                  cursor: 'pointer',
+                  border: '1px solid var(--border)',
+                  color: activeCategory === tab ? '#fff' : 'var(--ink-mid)',
+                  background: activeCategory === tab ? 'var(--ink)' : 'var(--white)',
+                  borderColor: activeCategory === tab ? 'var(--ink)' : 'var(--border)',
+                  transition: 'all 0.15s',
+                  fontFamily: 'var(--font-outfit)',
+                }}
               >
-                <OrgCard org={org} />
-              </motion.div>
+                {tab}
+                <span style={{ marginLeft: 6, opacity: 0.6, fontSize: 11 }}>
+                  {tab === 'All'
+                    ? ecosystemOrgs.length
+                    : ecosystemOrgs.filter((o) => o.category === tab).length}
+                </span>
+              </button>
             ))}
-          </AnimatePresence>
-        </motion.div>
+          </div>
+
+          {/* Grid */}
+          <motion.div
+            layout
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+              gap: 10,
+            }}
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredEcosystem.map((org) => (
+                <motion.div
+                  key={org.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <OrgCard org={org} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   )

@@ -7,10 +7,12 @@ const events = [
   {
     date: 'Feb 4, 2026',
     title: 'AI Safety & Governance Virtual Event',
+    desc: 'A pre-Summit virtual gathering with 70+ attendees and 6 organizations presenting across governance, research, and community building.',
   },
   {
     date: 'Feb 17, 2026',
     title: 'AI Safety Mixer',
+    desc: "An independent mixer during the India AI Impact Summit with ~40 attendees and themed discussions on threat models, capabilities, and India's AI safety landscape.",
   },
 ]
 
@@ -23,7 +25,6 @@ export default function EventsSummarySection() {
         viewport={{ once: false, margin: '-80px' }}
         transition={{ duration: 0.5 }}
       >
-        <span className="chip-teal">Upcoming Events</span>
         <h2 className="h2" style={{ marginBottom: 12 }}>Events</h2>
         <p className="lead" style={{ marginBottom: 28 }}>
           Community events and gatherings shaping the AI Safety ecosystem in India.
@@ -42,7 +43,7 @@ export default function EventsSummarySection() {
               key={event.title}
               style={{
                 display: 'flex',
-                alignItems: 'center',
+                alignItems: 'flex-start',
                 gap: 16,
                 padding: '18px 0',
                 borderBottom: i < events.length - 1 ? '1px solid var(--border)' : 'none',
@@ -60,12 +61,18 @@ export default function EventsSummarySection() {
                   padding: '5px 12px',
                   flexShrink: 0,
                   whiteSpace: 'nowrap',
+                  marginTop: 2,
                 }}
               >
                 {event.date}
               </div>
-              <div style={{ fontSize: 15, fontWeight: 500, color: 'var(--ink)' }}>
-                {event.title}
+              <div>
+                <div style={{ fontSize: 15, fontWeight: 500, color: 'var(--ink)', marginBottom: 6 }}>
+                  {event.title}
+                </div>
+                <div style={{ fontSize: 13, color: 'var(--ink-mid)', lineHeight: 1.6 }}>
+                  {event.desc}
+                </div>
               </div>
             </div>
           ))}

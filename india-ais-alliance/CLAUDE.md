@@ -11,7 +11,6 @@ npm run lint     # ESLint via next lint
 npm run start    # Start production server (after build)
 ```
 
-> **Note:** Node.js is not in the system PATH on this machine. Install from nodejs.org before running any npm commands.
 
 ## Architecture
 
@@ -22,6 +21,8 @@ This is a **Next.js 14 App Router** project. Data is fetched server-side via ISR
 `lib/airtable.ts` is the single data layer. It exports typed async functions (`getOrgs`, `getNews`, `getLandscapeMapping`, `getIntlOrgs`, `getIndividuals`) that each wrap an Airtable table fetch with a `try/catch` — if Airtable is not configured, they silently return hardcoded fallback arrays defined at the bottom of the same file. **The site works fully without `.env.local` set**, using that fallback data.
 
 Server components (`app/page.tsx`, `app/landscape/page.tsx`, etc.) call these functions directly and pass results as props to client section components.
+
+The fallback data itself lives in `data/` as typed TypeScript arrays (`landscape-orgs.ts`, `intl-orgs.ts`, `team.ts`). `lib/airtable.ts` imports these arrays and returns them on Airtable failure. To update static content without Airtable, edit the arrays in `data/`.
 
 ### Component boundaries
 
@@ -62,6 +63,12 @@ All colors and spacing live as CSS vars (`--teal`, `--ink`, `--ink-mid`, `--ink-
 | `News` | Headline, Source, Date, Category, URL |
 | `Landscape_Mapping` | Organisation, Sector, Focus_Areas, AIS_Relevance, Location |
 | `Intl_Orgs` | Name, Description, Tag, Website |
+
+### Responsive design
+
+Three breakpoints via CSS media queries (not Tailwind responsive prefixes):
+- `≤1024px` (tablet): reduced section padding, smaller `OrbitCanvas` (320×320)
+- `≤768px` (mobile): hamburger nav, single-column layouts, adjusted font sizes
 
 ### Environment variables
 

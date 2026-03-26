@@ -13,10 +13,6 @@ const fade = (delay = 0) => ({
 export default function AboutSection() {
   return (
     <section className="sec-bg" id="about">
-      <motion.div {...fade(0)}>
-        <span className="chip-teal">Who We Are</span>
-      </motion.div>
-
       <div
         className="about-grid"
         style={{
@@ -24,20 +20,20 @@ export default function AboutSection() {
           gridTemplateColumns: '1fr 1fr',
           gap: 64,
           alignItems: 'start',
-          marginTop: 32,
         }}
       >
         {/* Left col */}
         <div>
-          <motion.h2 className="h2" {...fade(0.05)}>About the Hub</motion.h2>
+          <motion.h2 className="h2" {...fade(0)}>About the Hub</motion.h2>
 
-          <motion.p className="lead" style={{ marginBottom: 28 }} {...fade(0.1)}>
-            We exist to bridge India&apos;s growing AI ecosystem with the global AI Safety
-            movement — fostering research, collaboration, and policy engagement.
+          <motion.p className="lead" style={{ marginBottom: 28 }} {...fade(0.05)}>
+            The Hub operates at the intersection of India&apos;s AI ecosystem and the global AI
+            Safety movement — accelerating research collaboration, sharpening policy thinking, and
+            building the connective tissue between domestic and international efforts.
           </motion.p>
 
           <motion.div
-            {...fade(0.15)}
+            {...fade(0.1)}
             style={{
               background: 'var(--bg-2)',
               border: '1px solid var(--border)',
@@ -62,17 +58,16 @@ export default function AboutSection() {
               Hub?
             </h3>
             <p style={{ fontSize: 'clamp(17px, 2vw, 22px)', color: 'var(--ink-mid)', lineHeight: 1.75 }}>
-              India&apos;s AI landscape is expanding rapidly, yet AI Safety research,
-              coordination, and policy engagement remain fragmented. The India{' '}
-              <span style={{ color: 'var(--teal)' }}>AI Safety Coordination</span>{' '}
-              Hub creates a structured home for practitioners, researchers, and
-              organisations to connect, share resources, and accelerate AI Safety goals —
-              domestically and internationally.
+              India&apos;s AI Safety work is scattered across institutions, disciplines, and
+              geographies. Without a shared space, researchers duplicate efforts, policy insights
+              stay siloed, and emerging practitioners have no clear entry point. The Coordination
+              Hub exists to change that — creating a structured home where efforts align, resources
+              travel, and momentum compounds.
             </p>
           </motion.div>
         </div>
 
-        {/* Right col — Focus areas */}
+        {/* Right col — Activities */}
         <motion.div {...fade(0.1)}>
           <div
             style={{
@@ -92,14 +87,26 @@ export default function AboutSection() {
                 marginBottom: 20,
               }}
             >
-              Our Focus Areas
+              Activities
             </div>
 
             {[
-              { title: 'Coordination', desc: 'Connecting India\'s fragmented AI Safety ecosystem into a unified network.' },
-              { title: 'Research', desc: 'Building technical research tracks and mentorship pathways.' },
-              { title: 'Policy', desc: 'Engaging with India\'s AI governance landscape and international frameworks.' },
-              { title: 'Community', desc: 'Events, meetups, and WhatsApp communities for practitioners across India.' },
+              {
+                title: 'Coordination',
+                desc: "Facilitating regular dialogue between India's AI safety researchers, civil society groups, and governance practitioners — so efforts aren't duplicated and insights travel faster.",
+              },
+              {
+                title: 'Research',
+                desc: "Running governance research tracks, publishing policy analysis, and building mentorship pathways for emerging AI safety researchers in India.",
+              },
+              {
+                title: 'Policy',
+                desc: "Translating international AI safety frameworks for Indian policy contexts, producing policy briefs, and convening roundtable discussions with key stakeholders.",
+              },
+              {
+                title: 'Community Building',
+                desc: "Organizing events, roundtables, and working groups — and maintaining active communication channels for practitioners across India.",
+              },
             ].map((item, i) => (
               <motion.div
                 key={item.title}

@@ -18,6 +18,7 @@ const links = [
   { href: '/landscape', label: 'Landscape' },
   { href: '/events', label: 'Events' },
   { href: '/news', label: 'News' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 export default function Nav() {
