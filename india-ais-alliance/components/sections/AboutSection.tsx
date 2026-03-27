@@ -29,31 +29,50 @@ export default function AboutSection() {
             <span style={{ color: 'var(--teal)' }}>Coordination Hub</span>
           </motion.h2>
 
-          <motion.p
-            className="lead"
+          <motion.div
             style={{
               flex: 1,
+              position: 'relative',
+              overflow: 'hidden',
+              background: 'var(--teal)',
+              borderRadius: 16,
+              padding: '36px 32px',
               display: 'flex',
               alignItems: 'center',
-              maxWidth: '100%',
-              background: 'rgba(13, 122, 107, 0.08)',
-              border: '1.5px solid var(--teal)',
-              borderRadius: 12,
-              padding: '28px 32px',
-              color: 'var(--ink)',
-              fontSize: 'clamp(17px, 2vw, 23px)',
-              lineHeight: 1.8,
-              textAlign: 'left',
-              fontFamily: 'var(--font-outfit)',
             }}
             {...fade(0.05)}
           >
-            <span style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <span>India&apos;s AI Safety work is scattered across institutions, disciplines, and geographies.</span>
-              <span>Without a shared space, researchers duplicate efforts, policy insights stay siloed, and emerging practitioners have no clear entry point.</span>
-              <span>The Coordination Hub exists to change this by creating a structured home where efforts align, resources travel, and momentum compounds.</span>
-            </span>
-          </motion.p>
+            {/* Decorative circle */}
+            <div style={{
+              position: 'absolute',
+              top: -40,
+              right: -40,
+              width: 180,
+              height: 180,
+              borderRadius: '50%',
+              background: 'rgba(255,255,255,0.08)',
+              pointerEvents: 'none',
+            }} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%', position: 'relative' }}>
+              {[
+                "India's AI Safety work is scattered across institutions, disciplines, and geographies.",
+                "Without a shared space, researchers duplicate efforts, policy insights stay siloed, and emerging practitioners have no clear entry point.",
+                "The Coordination Hub exists to change this by creating a structured home where efforts align, resources travel, and momentum compounds.",
+              ].map((text, i) => (
+                <div key={i} style={{
+                  background: 'rgba(255,255,255,0.15)',
+                  borderRadius: 12,
+                  padding: '14px 20px',
+                  color: '#fff',
+                  fontSize: 17,
+                  lineHeight: 1.65,
+                  fontFamily: 'var(--font-outfit)',
+                }}>
+                  {text}
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
 
         {/* Right col — Activities */}
