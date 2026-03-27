@@ -19,56 +19,45 @@ export default function AboutSection() {
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
           gap: 64,
-          alignItems: 'start',
+          alignItems: 'stretch',
         }}
       >
         {/* Left col */}
-        <div>
-          <motion.h2 className="h2" {...fade(0)}>About the Hub</motion.h2>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <motion.h2 className="h2" style={{ marginBottom: 24 }} {...fade(0)}>
+            About the<br />
+            <span style={{ color: 'var(--teal)' }}>Coordination Hub</span>
+          </motion.h2>
 
-          <motion.p className="lead" style={{ marginBottom: 28 }} {...fade(0.05)}>
-            The Hub operates at the intersection of India&apos;s AI ecosystem and the global AI
-            Safety movement — accelerating research collaboration, sharpening policy thinking, and
-            building the connective tissue between domestic and international efforts.
-          </motion.p>
-
-          <motion.div
-            {...fade(0.1)}
+          <motion.p
+            className="lead"
             style={{
-              background: 'var(--bg-2)',
-              border: '1px solid var(--border)',
+              flex: 1,
+              display: 'flex',
+              alignItems: 'center',
+              maxWidth: '100%',
+              background: 'rgba(13, 122, 107, 0.08)',
+              border: '1.5px solid var(--teal)',
               borderRadius: 12,
-              padding: 36,
+              padding: '28px 32px',
+              color: 'var(--ink)',
+              fontSize: 'clamp(17px, 2vw, 23px)',
+              lineHeight: 1.8,
+              textAlign: 'left',
+              fontFamily: 'var(--font-outfit)',
             }}
+            {...fade(0.05)}
           >
-            <h3
-              style={{
-                fontFamily: 'var(--font-fraunces)',
-                fontSize: 'clamp(24px, 2.8vw, 34px)',
-                fontWeight: 700,
-                fontStyle: 'italic',
-                color: 'var(--ink)',
-                lineHeight: 1.15,
-                letterSpacing: '-0.02em',
-                marginBottom: 18,
-              }}
-            >
-              Why a{' '}
-              <span style={{ color: 'var(--teal)' }}>Coordination</span>{' '}
-              Hub?
-            </h3>
-            <p style={{ fontSize: 'clamp(17px, 2vw, 22px)', color: 'var(--ink-mid)', lineHeight: 1.75 }}>
-              India&apos;s AI Safety work is scattered across institutions, disciplines, and
-              geographies. Without a shared space, researchers duplicate efforts, policy insights
-              stay siloed, and emerging practitioners have no clear entry point. The Coordination
-              Hub exists to change that — creating a structured home where efforts align, resources
-              travel, and momentum compounds.
-            </p>
-          </motion.div>
+            <span style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <span>India&apos;s AI Safety work is scattered across institutions, disciplines, and geographies.</span>
+              <span>Without a shared space, researchers duplicate efforts, policy insights stay siloed, and emerging practitioners have no clear entry point.</span>
+              <span>The Coordination Hub exists to change this by creating a structured home where efforts align, resources travel, and momentum compounds.</span>
+            </span>
+          </motion.p>
         </div>
 
         {/* Right col — Activities */}
-        <motion.div {...fade(0.1)}>
+        <motion.div style={{ paddingTop: 48 }} {...fade(0.1)}>
           <div
             style={{
               background: 'var(--white)',
@@ -83,29 +72,29 @@ export default function AboutSection() {
                 fontWeight: 700,
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
-                color: 'var(--ink-dim)',
+                color: 'var(--teal)',
                 marginBottom: 20,
               }}
             >
-              Activities
+              Focus Areas
             </div>
 
             {[
               {
-                title: 'Coordination',
-                desc: "Facilitating regular dialogue between India's AI safety researchers, civil society groups, and governance practitioners — so efforts aren't duplicated and insights travel faster.",
+                title: "Accelerate India's Contribution",
+                desc: "Strengthen domestic research, policy capacity, and institutional readiness to engage with global safety challenges.",
               },
               {
-                title: 'Research',
-                desc: "Running governance research tracks, publishing policy analysis, and building mentorship pathways for emerging AI safety researchers in India.",
-              },
-              {
-                title: 'Policy',
-                desc: "Translating international AI safety frameworks for Indian policy contexts, producing policy briefs, and convening roundtable discussions with key stakeholders.",
+                title: 'Map & Strengthen the Ecosystem',
+                desc: "Maintain a continuously updated view of India's AI Safety landscape to guide collective action.",
               },
               {
                 title: 'Community Building',
-                desc: "Organizing events, roundtables, and working groups — and maintaining active communication channels for practitioners across India.",
+                desc: "Organizing events, roundtables, and working groups and maintaining active communication channels for practitioners across India.",
+              },
+              {
+                title: 'Shared Goals, Collective Action',
+                desc: "Align industry, research, and public stakeholders to drive safe and competitive AI development in India.",
               },
             ].map((item, i) => (
               <motion.div

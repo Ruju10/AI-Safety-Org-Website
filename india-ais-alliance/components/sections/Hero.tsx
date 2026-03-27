@@ -150,8 +150,8 @@ export default function Hero() {
           transition={{ duration: 1.2, delay: 0.3 }}
           style={{
             position: 'relative',
-            width: 680,
-            height: 680,
+            width: 544,
+            height: 544,
             flexShrink: 0,
           }}
         >
