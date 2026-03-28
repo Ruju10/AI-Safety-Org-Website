@@ -11,14 +11,13 @@ const links = [
     label: 'About',
     dropdown: [
       { href: '/about', label: 'About Us' },
-      { href: '/about#toc', label: 'Theory of Change' },
       { href: '/about#team', label: 'Our Team' },
     ],
   },
   { href: '/landscape', label: 'Landscape' },
   { href: '/events', label: 'Events' },
   { href: '/news', label: 'News' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/contact', label: 'Contact Us' },
 ]
 
 export default function Nav() {
@@ -48,7 +47,7 @@ export default function Nav() {
     dropdownTimeout.current = setTimeout(() => setDropdownOpen(false), 150)
   }
 
-  const isAboutActive = pathname === '/about' || pathname === '/theory-of-change'
+  const isAboutActive = pathname === '/about'
 
   return (
     <>

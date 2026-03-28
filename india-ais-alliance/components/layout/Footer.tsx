@@ -55,12 +55,9 @@ export default function Footer() {
           <ul style={{ listStyle: 'none', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px 24px' }}>
             {[
               { href: '/about', label: 'About Us' },
-              { href: '/about#toc', label: 'Theory of Change' },
               { href: '/about#team', label: 'Our Team' },
-              { href: '/landscape', label: 'Landscape' },
               { href: '/events', label: 'Events' },
               { href: '/contact', label: 'Contact Us' },
-              { href: '/news', label: 'News' },
             ].map((l) => (
               <li key={l.href + l.label}>
                 <Link href={l.href} style={{ color: 'var(--ink-mid)', textDecoration: 'none', fontSize: 13.5, transition: 'color 0.15s' }}
@@ -81,7 +78,7 @@ export default function Footer() {
           <ul style={{ listStyle: 'none' }}>
             {[
               { href: '/news', label: 'AIS News India' },
-              { href: '/mapping', label: 'AI Landscape Map' },
+              { href: '/landscape', label: 'AI Landscape Map' },
             ].map((l) => (
               <li key={l.href} style={{ marginBottom: 6 }}>
                 <Link href={l.href} style={{ color: 'var(--ink-mid)', textDecoration: 'none', fontSize: 13.5, transition: 'color 0.15s' }}
