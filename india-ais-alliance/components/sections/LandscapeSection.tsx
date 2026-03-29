@@ -5,60 +5,117 @@ import { useState } from 'react'
 import landscapeOrgs, { CATEGORIES, CATEGORY_COLORS } from '@/data/landscape-orgs'
 import type { LandscapeOrgEntry } from '@/data/landscape-orgs'
 
+function OrgLogo({ org, dotColor }: { org: LandscapeOrgEntry; dotColor: string }) {
+  const [clearbitFailed, setClearbitFailed] = useState(false)
+  const [faviconFailed, setFaviconFailed] = useState(false)
+  const initials = org.name.split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('')
+
+  let domain: string | null = null
+  try { domain = org.website ? new URL(org.website).hostname.replace(/^www\./, '') : null } catch {}
+
+  const clearbitUrl = domain ? `https://logo.clearbit.com/${domain}` : null
+  const faviconUrl  = org.website ? `https://www.google.com/s2/favicons?sz=64&domain_url=${encodeURIComponent(org.website)}` : null
+
+  const logoSrc = !clearbitFailed ? clearbitUrl : (!faviconFailed ? faviconUrl : null)
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+      {logoSrc ? (
+        <img
+          src={logoSrc}
+          alt={org.name}
+          onError={() => {
+            if (!clearbitFailed) setClearbitFailed(true)
+            else setFaviconFailed(true)
+          }}
+          style={{ width: 26, height: 26, objectFit: 'contain', borderRadius: 5, background: 'var(--bg-2)', padding: 2 }}
+        />
+      ) : (
+        <div style={{
+          width: 26, height: 26, borderRadius: 5,
+          background: dotColor + '18', border: `1px solid ${dotColor}30`,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontSize: 9, fontWeight: 700, color: dotColor, flexShrink: 0,
+        }}>
+          {initials}
+        </div>
+      )}
+      <div style={{ width: 6, height: 6, borderRadius: '50%', background: dotColor }} />
+    </div>
+  )
+}
+
 function OrgCard({ org }: { org: LandscapeOrgEntry }) {
   const dotColor = CATEGORY_COLORS[org.category] || '#8A8884'
+  const [hovered, setHovered] = useState(false)
+
+  const cardStyle: React.CSSProperties = {
+    background: 'var(--white)',
+    border: `1px solid ${hovered && org.website ? 'var(--teal)' : 'var(--border)'}`,
+    borderRadius: 10,
+    padding: '12px 13px',
+    cursor: org.website ? 'pointer' : 'default',
+    display: 'flex',
+    flexDirection: 'column',
+    textDecoration: 'none',
+    transition: 'border-color 0.18s',
+    height: '100%',
+  }
+
+  const inner = (
+    <>
+      <OrgLogo org={org} dotColor={dotColor} />
+      <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--ink)', marginBottom: 3, lineHeight: 1.3 }}>
+        {org.name}
+      </div>
+      <div style={{ fontSize: 11, color: 'var(--ink-dim)', lineHeight: 1.45, flex: 1 }}>{org.focus}</div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 7 }}>
+        <div style={{ fontSize: 10, color: 'var(--ink-dim)', opacity: 0.65 }}>{org.location}</div>
+        {org.website && (
+          <span style={{
+            fontSize: 10.5,
+            color: 'var(--teal)',
+            fontWeight: 600,
+            opacity: hovered ? 1 : 0,
+            transition: 'opacity 0.15s',
+          }}>
+            Visit ↗
+          </span>
+        )}
+      </div>
+    </>
+  )
+
+  if (org.website) {
+    return (
+      <motion.a
+        href={org.website}
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ y: -3, boxShadow: '0 6px 20px rgba(0,0,0,0.08)' }}
+        transition={{ duration: 0.2 }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={cardStyle}
+      >
+        {inner}
+      </motion.a>
+    )
+  }
 
   return (
     <motion.div
-      whileHover={{ y: -4, boxShadow: '0 8px 24px rgba(0,0,0,0.09)' }}
+      whileHover={{ y: -3, boxShadow: '0 6px 20px rgba(0,0,0,0.08)' }}
       transition={{ duration: 0.2 }}
-      style={{
-        background: 'var(--white)',
-        border: '1px solid var(--border)',
-        borderRadius: 10,
-        padding: '18px 16px',
-        position: 'relative',
-        cursor: 'default',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column' as const,
-      }}
+      style={cardStyle}
     >
-      <div
-        style={{
-          position: 'absolute',
-          top: 16,
-          right: 16,
-          width: 7,
-          height: 7,
-          borderRadius: '50%',
-          background: dotColor,
-        }}
-      />
-      <div style={{ fontSize: 13.5, fontWeight: 600, color: 'var(--ink)', marginBottom: 4, lineHeight: 1.3, paddingRight: 16 }}>
-        {org.website ? (
-          <a
-            href={org.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'var(--ink)', textDecoration: 'none' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--teal)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--ink)')}
-          >
-            {org.name}
-          </a>
-        ) : (
-          org.name
-        )}
-      </div>
-      <div style={{ fontSize: 11.5, color: 'var(--ink-dim)', marginBottom: 4, flex: 1 }}>{org.focus}</div>
-      <div style={{ fontSize: 10.5, color: 'var(--ink-dim)', opacity: 0.7 }}>{org.location}</div>
+      {inner}
     </motion.div>
   )
 }
 
-const aiSafetyOrgs = landscapeOrgs.filter((o) => o.aiSafety)
-const ecosystemOrgs = landscapeOrgs.filter((o) => !o.aiSafety)
+const aiSafetyOrgs = landscapeOrgs.filter((o) => o.aiSafety).sort((a, b) => a.name.localeCompare(b.name))
+const ecosystemOrgs = landscapeOrgs.filter((o) => !o.aiSafety).sort((a, b) => a.name.localeCompare(b.name))
 
 // Preserve category order from CATEGORIES for the ecosystem filter tabs
 const ecosystemCategories = ['All', ...CATEGORIES.slice(1).filter(
@@ -75,6 +132,7 @@ export default function LandscapeSection() {
 
   return (
     <section className="sec-bg2" id="landscape">
+      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -82,7 +140,7 @@ export default function LandscapeSection() {
         transition={{ duration: 0.5 }}
       >
         <span className="chip-gray">The Ecosystem</span>
-        <h2 className="h2">Explore the Landscape</h2>
+        <h2 className="h2">Explore the AI Landscape</h2>
         <p className="lead" style={{ marginBottom: 36 }}>
           India&apos;s AI Safety organisations alongside the labs, institutions, think tanks, and
           government bodies shaping how AI develops here.
@@ -120,7 +178,7 @@ export default function LandscapeSection() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
               gap: 10,
             }}
           >
@@ -192,7 +250,7 @@ export default function LandscapeSection() {
             layout
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
               gap: 10,
             }}
           >
@@ -205,6 +263,7 @@ export default function LandscapeSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
+                  style={{ height: '100%' }}
                 >
                   <OrgCard org={org} />
                 </motion.div>
@@ -213,6 +272,7 @@ export default function LandscapeSection() {
           </motion.div>
         </div>
       </motion.div>
+      </div>
     </section>
   )
 }

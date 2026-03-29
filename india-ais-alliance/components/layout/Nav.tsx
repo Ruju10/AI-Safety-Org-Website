@@ -14,9 +14,8 @@ const links = [
       { href: '/about#team', label: 'Our Team' },
     ],
   },
-  { href: '/landscape', label: 'Landscape' },
-  { href: '/events', label: 'Events' },
-  { href: '/news', label: 'News' },
+  { href: '/landscape', label: 'AI Landscape' },
+  { href: '/events', label: 'Events & News' },
   { href: '/contact', label: 'Contact Us' },
 ]
 
@@ -221,7 +220,7 @@ export default function Nav() {
                 paddingTop: '300%',
                 marginLeft: '-150%',
                 marginTop: '-150%',
-                background: 'conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgba(13,122,107,0.15) 300deg, rgba(13,122,107,0.5) 330deg, #0D7A6B 350deg, #2EB89A 360deg)',
+                background: 'conic-gradient(from 0deg, transparent 0deg, transparent 180deg, rgba(13,122,107,0.08) 210deg, rgba(13,122,107,0.2) 250deg, rgba(13,122,107,0.5) 300deg, #0D7A6B 340deg, #2EB89A 360deg)',
                 animation: 'comet-orbit 2.4s linear infinite',
               }} />
               {/* Inner button */}

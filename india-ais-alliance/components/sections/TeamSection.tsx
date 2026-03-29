@@ -49,7 +49,7 @@ export default function TeamSection() {
                 borderRadius: 12,
                 padding: '32px 20px',
                 textAlign: 'center',
-                width: 200,
+                width: m.bio ? 260 : 200,
               }}
             >
               <div style={{
@@ -75,6 +75,11 @@ export default function TeamSection() {
                   textTransform: 'uppercase', color: 'var(--teal)', marginTop: 6,
                 }}>
                   {m.role}
+                </div>
+              )}
+              {m.bio && (
+                <div style={{ fontSize: 12, color: 'var(--ink-mid)', lineHeight: 1.6, marginTop: 10, textAlign: 'left' }}>
+                  {m.bio}
                 </div>
               )}
             </motion.div>

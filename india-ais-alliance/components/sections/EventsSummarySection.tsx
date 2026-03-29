@@ -8,11 +8,13 @@ const events = [
     date: 'Feb 4, 2026',
     title: 'AI Safety & Governance Virtual Event',
     desc: 'A pre-Summit virtual gathering with 70+ attendees and 6 organizations presenting across governance, research, and community building.',
+    href: '/events#virtual-event',
   },
   {
     date: 'Feb 17, 2026',
     title: 'AI Safety Mixer',
     desc: "An independent mixer during the India AI Impact Summit with ~40 attendees and themed discussions on threat models, capabilities, and India's AI safety landscape.",
+    href: '/events#mixer',
   },
 ]
 
@@ -39,15 +41,20 @@ export default function EventsSummarySection() {
           }}
         >
           {events.map((event, i) => (
-            <div
+            <Link
               key={event.title}
+              href={event.href}
               style={{
                 display: 'flex',
                 alignItems: 'flex-start',
                 gap: 16,
                 padding: '18px 0',
                 borderBottom: i < events.length - 1 ? '1px solid var(--border)' : 'none',
+                textDecoration: 'none',
+                transition: 'background 0.15s',
               }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.background = 'var(--bg)')}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.background = 'transparent')}
             >
               <div
                 style={{
@@ -74,7 +81,7 @@ export default function EventsSummarySection() {
                   {event.desc}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
