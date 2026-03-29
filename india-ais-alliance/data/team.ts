@@ -7,6 +7,7 @@ export interface TeamMember {
   initial: string
   name: string
   role: string
+  bio?: string
   photo?: string
 }
 
@@ -21,7 +22,7 @@ export interface Advisor {
 export const coreTeam: TeamMember[] = [
   { initial: 'A', name: 'Aman Agarwal', role: '' },
   { initial: 'K', name: 'Kunal Singh', role: '' },
-  { initial: 'R', name: 'Rujuta Karekar', role: '' },
+  { initial: 'R', name: 'Rujuta Karekar', role: 'Sentient Futures Fellow', bio: 'An engineer pivoting to AI safety and governance research. Her work focuses on military AI governance, autonomous weapons, and gradual disempowerment.' },
 ]
 
 export const advisors: Advisor[] = [

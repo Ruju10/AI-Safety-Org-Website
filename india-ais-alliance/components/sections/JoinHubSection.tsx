@@ -20,11 +20,12 @@ export default function JoinHubSection() {
         </p>
 
         <div style={{ marginTop: 40, display: 'flex', gap: 16, alignItems: 'stretch', flexWrap: 'wrap' }}>
-          {/* Main green card */}
+          {/* Main teal card */}
           <div
             style={{
               flex: '1 1 220px',
               background: 'var(--teal)',
+              border: 'none',
               borderRadius: 14,
               padding: '40px 34px',
               color: '#fff',
@@ -49,6 +50,7 @@ export default function JoinHubSection() {
                 fontSize: 28,
                 marginBottom: 14,
                 position: 'relative',
+                color: '#fff',
               }}
             >
               Be Part of the Ecosystem
@@ -98,7 +100,7 @@ export default function JoinHubSection() {
                   borderRadius: 8,
                   fontSize: 15,
                   fontWeight: 600,
-                  border: '1px solid rgba(255,255,255,0.2)',
+                  border: '1px solid rgba(255,255,255,0.25)',
                 }}
               >
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fff', flexShrink: 0 }} />

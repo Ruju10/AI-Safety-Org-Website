@@ -113,14 +113,6 @@ const landscapeOrgs: LandscapeOrgEntry[] = [
     website: 'https://scai.iitd.ac.in',
   },
   {
-    id: 'acad-5',
-    name: 'Ashoka University',
-    category: 'Academia',
-    focus: 'Trivedi Centre for Political Data, AI & Society',
-    location: 'Sonipat, Haryana',
-    website: 'https://www.ashoka.edu.in',
-  },
-  {
     id: 'acad-6',
     name: 'IIIT Hyderabad',
     category: 'Academia',
@@ -152,7 +144,7 @@ const landscapeOrgs: LandscapeOrgEntry[] = [
     category: 'Research & NGO',
     focus: 'Community Building & AIS Advocacy',
     location: 'India',
-    website: '',
+    website: 'https://aisafetyindia.com',
     aiSafety: true,
   },
   {
@@ -161,7 +153,7 @@ const landscapeOrgs: LandscapeOrgEntry[] = [
     category: 'Research & NGO',
     focus: 'AI Safety Research',
     location: 'India',
-    website: '',
+    website: 'https://groundless.ai',
     aiSafety: true,
   },
   {
@@ -170,7 +162,7 @@ const landscapeOrgs: LandscapeOrgEntry[] = [
     category: 'Research & NGO',
     focus: 'AI Safety Education & Community',
     location: 'India',
-    website: '',
+    website: 'https://www.impactacademy.org',
     aiSafety: true,
   },
   {
@@ -182,21 +174,12 @@ const landscapeOrgs: LandscapeOrgEntry[] = [
     website: 'https://www.wadhwaniai.org',
   },
   {
-    id: 'rng-5',
-    name: 'AI Safety Connect',
-    category: 'Research & NGO',
-    focus: 'AI Safety Coordination & Networking',
-    location: 'India',
-    website: '',
-    aiSafety: true,
-  },
-  {
     id: 'rng-6',
     name: 'AI Safety Asia',
     category: 'Research & NGO',
     focus: 'Regional AIS Network (Asia Focus)',
     location: 'Asia / India',
-    website: '',
+    website: 'https://www.aisafety.asia',
     aiSafety: true,
   },
 
@@ -231,7 +214,7 @@ const landscapeOrgs: LandscapeOrgEntry[] = [
     category: 'Think Tank & Policy',
     focus: 'AI Governance Research & Policy',
     location: 'India',
-    website: '',
+    website: 'https://www.digitalfutureslab.in',
   },
   {
     id: 'ttp-5',
@@ -292,31 +275,6 @@ const landscapeOrgs: LandscapeOrgEntry[] = [
     website: 'https://corover.ai',
   },
 
-  // ── Civil Society ───────────────────────────────────────────
-  {
-    id: 'cs-1',
-    name: 'IT for Change',
-    category: 'Civil Society',
-    focus: 'Digital Justice, AI & Social Equity',
-    location: 'Bangalore',
-    website: 'https://itforchange.net',
-  },
-  {
-    id: 'cs-2',
-    name: 'Internet Freedom Foundation (IFF)',
-    category: 'Civil Society',
-    focus: 'Digital Rights, AI Accountability',
-    location: 'New Delhi',
-    website: 'https://internetfreedom.in',
-  },
-  {
-    id: 'cs-3',
-    name: 'Software Freedom Law Centre (SFLC.in)',
-    category: 'Civil Society',
-    focus: 'Digital Rights, Open Source & AI Policy',
-    location: 'New Delhi',
-    website: 'https://sflc.in',
-  },
 ]
 
 export default landscapeOrgs

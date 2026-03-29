@@ -56,7 +56,7 @@ export default function AboutSection() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%', position: 'relative' }}>
               {[
                 "India's AI Safety work is scattered across institutions, disciplines, and geographies.",
-                "Without a shared space, researchers duplicate efforts, policy insights stay siloed, and emerging practitioners have no clear entry point.",
+                "Without a shared network, researchers duplicate efforts, policy insights stay siloed, and emerging practitioners have no clear entry point.",
                 "The Coordination Hub exists to change this by creating a structured home where efforts align, resources travel, and momentum compounds.",
               ].map((text, i) => (
                 <div key={i} style={{

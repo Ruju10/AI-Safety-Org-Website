@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import OrbitCanvas from '@/components/visualizations/OrbitCanvas'
+import IndiaGlobeAnimation from '@/components/visualizations/IndiaGlobeAnimation'
 
 const heroLines = ['India', 'AI Safety', 'Coordination', 'Hub']
 
@@ -137,12 +137,12 @@ export default function Hero() {
               Join the Hub →
             </Link>
             <Link href="/landscape" className="btn-ghost">
-              Explore the Landscape
+              Explore the AI Landscape
             </Link>
           </motion.div>
         </div>
 
-        {/* Right: orbital animation */}
+        {/* Right: globe animation */}
         <motion.div
           className="hero-anim"
           initial={{ opacity: 0 }}
@@ -150,12 +150,11 @@ export default function Hero() {
           transition={{ duration: 1.2, delay: 0.3 }}
           style={{
             position: 'relative',
-            width: 544,
-            height: 544,
+            width: 620,
             flexShrink: 0,
           }}
         >
-          <OrbitCanvas />
+          <IndiaGlobeAnimation />
         </motion.div>
       </div>
     </section>

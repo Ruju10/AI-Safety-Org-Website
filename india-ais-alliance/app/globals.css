@@ -202,7 +202,8 @@ body {
 
   /* Two-column grids → single column */
   .about-grid,
-  .toc-grid {
+  .toc-grid,
+  .events-news-grid {
     grid-template-columns: 1fr !important;
     gap: 32px !important;
   }
@@ -228,6 +229,11 @@ body {
 @keyframes comet-orbit {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
+}
+
+@keyframes news-scroll {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
 }
 
 /* Small mobile: <= 480px */
