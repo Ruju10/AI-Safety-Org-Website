@@ -49,7 +49,7 @@ export default function TeamSection() {
                 borderRadius: 12,
                 padding: '32px 20px',
                 textAlign: 'center',
-                width: m.bio ? 260 : 200,
+                width: 340,
               }}
             >
               <div style={{
@@ -68,17 +68,17 @@ export default function TeamSection() {
                   ? <img src={m.photo} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   : m.initial}
               </div>
-              <div style={{ fontSize: 15, fontWeight: 600, color: 'var(--ink)' }}>{m.name}</div>
+              <div style={{ fontSize: 15, fontWeight: 600, fontFamily: 'var(--font-outfit)', color: 'var(--ink)' }}>{m.name}</div>
               {m.role && (
                 <div style={{
-                  fontSize: 11, fontWeight: 600, letterSpacing: '0.07em',
+                  fontSize: 11, fontWeight: 600, fontFamily: 'var(--font-outfit)', letterSpacing: '0.07em',
                   textTransform: 'uppercase', color: 'var(--teal)', marginTop: 6,
                 }}>
                   {m.role}
                 </div>
               )}
               {m.bio && (
-                <div style={{ fontSize: 12, color: 'var(--ink-mid)', lineHeight: 1.6, marginTop: 10, textAlign: 'left' }}>
+                <div style={{ fontSize: 13, fontFamily: 'var(--font-outfit)', color: 'var(--ink-mid)', lineHeight: 1.7, marginTop: 10, textAlign: 'center' }}>
                   {m.bio}
                 </div>
               )}
@@ -138,7 +138,7 @@ export default function TeamSection() {
                     : a.initial}
                 </div>
                 <div>
-                  <div style={{ fontSize: 15, fontWeight: 600, color: '#fff' }}>{a.name}</div>
+                  <div style={{ fontSize: 15, fontWeight: 600, fontFamily: 'var(--font-outfit)', color: '#fff' }}>{a.name}</div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 5 }}>
                     <span style={{
                       fontSize: 10, fontWeight: 700, letterSpacing: '0.07em',
@@ -148,12 +148,12 @@ export default function TeamSection() {
                       Advisor
                     </span>
                     {a.affiliation && (
-                      <span style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.7)' }}>{a.affiliation}</span>
+                      <span style={{ fontSize: 11.5, fontFamily: 'var(--font-outfit)', color: 'rgba(255,255,255,0.7)' }}>{a.affiliation}</span>
                     )}
                   </div>
                 </div>
               </div>
-              <p style={{ fontSize: 13.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>
+              <p style={{ fontSize: 13.5, fontFamily: 'var(--font-outfit)', color: 'rgba(255,255,255,0.85)', lineHeight: 1.75 }}>
                 {a.description}
               </p>
             </motion.div>
