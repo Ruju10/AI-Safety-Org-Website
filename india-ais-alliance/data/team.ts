@@ -28,7 +28,7 @@ export const advisors: Advisor[] = [
   {
     initial: 'A',
     name: 'Aman Agarwal',
-    affiliation: 'SAIF',
+    affiliation: '',
     description:
       'Former FIG Fellow researching AI governance with Oxford Researchers and former SPAR Fellow at CeSIA (Paris) focused on UN-level AI policy. Background in quantitative economics (Erasmus Mundus, Paris 1 Panthéon-Sorbonne) with experience in parliamentary policy, UNDP research, and international stakeholder coordination.',
   },
