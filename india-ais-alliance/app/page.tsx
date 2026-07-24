@@ -1,6 +1,5 @@
 import Hero from '@/components/sections/Hero'
 import AboutSection from '@/components/sections/AboutSection'
-import AIRedLinesSection from '@/components/sections/AIRedLinesSection'
 import EventsSummarySection from '@/components/sections/EventsSummarySection'
 import JoinHubSection from '@/components/sections/JoinHubSection'
 import ContactSection from '@/components/sections/ContactSection'
@@ -11,7 +10,6 @@ export default async function Home() {
     <>
       <Hero />
       <AboutSection />
-      <AIRedLinesSection />
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
         <EventsSummarySection />
         <JoinHubSection />
