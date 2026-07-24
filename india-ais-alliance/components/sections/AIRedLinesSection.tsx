@@ -39,12 +39,16 @@ export default function AIRedLinesSection() {
             marginTop: 40,
           }}
         >
-          {resources.map((r) => (
+          {resources.map((r, i) => (
             <motion.a
               key={r.title}
               href={r.href}
               target="_blank"
               rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: '-80px' }}
+              transition={{ duration: 0.4, delay: i * 0.07 }}
               whileHover={{ y: -4, boxShadow: '0 4px 14px rgba(0,0,0,0.05)' }}
               style={{
                 display: 'block',
